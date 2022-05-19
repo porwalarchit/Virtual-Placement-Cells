@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const College = require("../models/collegeModel");
 
-module.exports =  collegeSignup = async (req, res) => {
+const collegeSignup = async (req, res) => {
     try {
         College.findOne({ collegeName: req.body.collegeName }).exec(async(error, user) => {
             if (user) {
@@ -43,3 +43,4 @@ module.exports =  collegeSignup = async (req, res) => {
     }
 }
 
+module.exports = collegeSignup;

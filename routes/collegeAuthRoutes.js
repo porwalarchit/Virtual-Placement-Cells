@@ -1,17 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const collegeSignup = require("../controllers/collegeSignup");
-// const bcrypt = require("bcrypt");
-// const College = require("../models/collegeModel");
-router.post('/register',  collegeSignup);
+const collegeLogin = require("../controllers/collegeLogin");
 
-router.post('/login', async (req, res) => {
-    try {
+router.post('/register', collegeSignup);
 
-    } catch (error) {
-        return res.status(501).json(error)
-    }
-    res.status(200).json("College Login Route")
-})
+router.post('/login', collegeLogin);
 
 module.exports = router
