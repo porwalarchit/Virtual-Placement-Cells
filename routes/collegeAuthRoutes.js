@@ -1,13 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const collegeSignup = require("../controllers/collegeSignup");
 
-const College = require("../models/collegeModel");
+router.post('/register', collegeSignup);
 
-router.post('/register', (req, res)=>{
-    res.status(200).json("College SignUp Route")
-})
-
-router.post('/login', (req, res)=>{
+router.post('/login', (req, res) => {
     res.status(200).json("College Login Route")
 })
 
