@@ -6,14 +6,13 @@ const collegeSignup = async (req, res) => {
         College.findOne({ collegeName: req.body.collegeName }).exec(async(error, user) => {
             if (user) {
                 return res.status(301).json({
-                    message: "College Already Exist"
+                    message: "College Already Exist, Try Signin"
                 })
             }
 
             else if (error) {
                 return res.status(501).json(error)
             }
-
 
             if (req.body.password == req.body.confirmpassword) {
                 const newUser = new College({
@@ -28,7 +27,7 @@ const collegeSignup = async (req, res) => {
 
                 await newUser.save();
                 return res.status(200).json({
-                    message: "User Registered"
+                    message: "College Registered"
                 });
             }
             else {

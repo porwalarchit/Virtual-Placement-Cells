@@ -2,12 +2,14 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./db/conn");
 const collegeAuthRoutes = require("./routes/collegeAuthRoutes");
+const companyAuthRoutes = require("./routes/companyAuthRoutes");
 const app = express();
 dotenv.config();
 
 // middleware
 app.use(express.json());
 app.use("/college", collegeAuthRoutes);
+app.use("/company", companyAuthRoutes);
 
 // Setting up Database and Server to run in sync
 const PORT = process.env.PORT || 3000
