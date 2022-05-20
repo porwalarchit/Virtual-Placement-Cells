@@ -1,5 +1,7 @@
 const bcrypt = require("bcrypt");
 const College = require("../models/collegeModel");
+const jwt = require("jsonwebtoken");
+
 
 const collegeLogin = async (req, res) => {
     try {
@@ -7,9 +9,16 @@ const collegeLogin = async (req, res) => {
             if (user) {
                 const validPassword = await bcrypt.compare(req.body.password, user.hashPassword);
                 if (validPassword) {
+
+                    // Setting up jwt access token while logging in.
+                    const userPayload = {id: user._id};
+                    const accessToken = jwt.sign(userPayload, process.env.JWT_SECRET, {
+                         expiresIn: '3h' 
+                    });
+
                     return res.status(201).json({
                         message: "Login Successful",
-                        user
+                        accessToken,
                     });
                 } else {
                     return res.status(401).json({ error: "Invalid Login Credentials" });
