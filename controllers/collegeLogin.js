@@ -17,7 +17,7 @@ const collegeLogin = async (req, res) => {
                     });
 
                     return res.status(201).json({
-                        message: "Login Successful",
+                        message: `Hey ${user.collegeName}, Welcome to Virtual Placement Cell.`,
                         accessToken,
                     });
                 } else {
@@ -25,7 +25,7 @@ const collegeLogin = async (req, res) => {
                 }
             } else {
                 return res.status(301).json({
-                    message: "User doesn't exist",
+                    message: "College doesn't exist",
                 });
             }
         })
