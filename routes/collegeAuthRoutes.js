@@ -15,5 +15,4 @@ router.get('/profile', authenticateToken, getCollegeProfile);
 
 router.patch('/update/profile', authenticateToken, upload.single("profileImg"), updateCollegeProfile);
 
-
 module.exports = router

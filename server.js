@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./db/conn");
 const collegeAuthRoutes = require("./routes/collegeAuthRoutes");
@@ -6,8 +7,10 @@ const companyAuthRoutes = require("./routes/companyAuthRoutes");
 const app = express();
 dotenv.config();
 
-// middleware
-app.use(express.json());    
+// middlewares
+app.use(express.json());
+app.use(cors("*"));
+
 app.use("/college", collegeAuthRoutes);
 app.use("/company", companyAuthRoutes);
 
