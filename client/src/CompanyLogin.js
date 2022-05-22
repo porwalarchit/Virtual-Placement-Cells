@@ -15,8 +15,8 @@ function CompanyLogin() {
         <div style={{marginBottom:"25px",fontSize:"360%",fontWeight:"bolder",fontFamily:"sans-serif"}}>Login</div>
         <span style={{fontSize:"90%",fontFamily:"sans-serif"}}>New User?<Link to = "/companysignup"> Try Signing In.</Link></span>
         <Form style={{marginTop:"5%"}}>
-            <input placeholder='Email' style={{paddingLeft:"2%",marginBottom:"10%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>
-            <input placeholder='Password' style={{paddingLeft:"2%",marginBottom:"10%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>
+            <input required placeholder='Email' style={{paddingLeft:"2%",marginBottom:"10%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>
+            <input required placeholder='Password' style={{paddingLeft:"2%",marginBottom:"10%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>
             <Button style={{padding:"8px 40px",borderRadius:"25px",color:"white",backgroundColor:"black",fontSize:"110%",fontWeight:"bold",fontFamily:"sans-serif"}}>Login</Button>
         </Form>
         </Col>
