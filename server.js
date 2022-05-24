@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./db/conn");
 const collegeAuthRoutes = require("./routes/collegeAuthRoutes");
 const companyAuthRoutes = require("./routes/companyAuthRoutes");
+const collegePlacementRoutes = require("./routes/collegePlacementRoutes");
 const app = express();
 dotenv.config();
 
@@ -13,10 +14,7 @@ app.use(cors("*"));
 
 app.use("/college", collegeAuthRoutes);
 app.use("/company", companyAuthRoutes);
-
-
-const personRoutes = require("./routes/personRoutes");
-app.use("/api", personRoutes);
+app.use("/college/placement", collegePlacementRoutes);
 
 // Setting up Database and Server to run in sync
 const PORT = process.env.PORT || 5000 
