@@ -14,8 +14,12 @@ app.use(cors("*"));
 app.use("/college", collegeAuthRoutes);
 app.use("/company", companyAuthRoutes);
 
+
+const personRoutes = require("./routes/personRoutes");
+app.use("/api", personRoutes);
+
 // Setting up Database and Server to run in sync
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000 
 const start = async() =>{
     try {
         await connectDB(process.env.MONGO_URI);
