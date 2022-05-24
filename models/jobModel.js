@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
 
 const jobSchema = new mongoose.Schema({
+    companyId:{
+        type: String,
+        require:[true, "Please enter Company Id"],
+    },
+    companyName:{
+        type: String,
+        require: [true, "Please Enter Company Name"]
+    },
     jobName:{
         type:String,
         required:[true, "Please enter Job Name"],
@@ -22,10 +30,12 @@ const jobSchema = new mongoose.Schema({
         required:[true, "Please enter Duration of Job"],
     },
     jobPerks:{
-        type: Array,
+        type: [{
+            type:String
+        }],
     },
     deadline:{
-        type:Date,
+        type:String,
     }
 });
 
