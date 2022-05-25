@@ -25,12 +25,12 @@
     margin: 6% 0%;
     display: flex;
     justify-content: center;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     font-family:sans-serif;
     font-weight: 600;
 }
 .title{
-    font-size: 220%;
+    font-size: 150%;
     font-family:sans-serif;
     font-weight: 500;
     margin-right:"2%"

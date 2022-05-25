@@ -25,25 +25,27 @@ function MyCompanyDashboard() {
                     GOLDMAN SACHS
                   </Col>
                 </Row>
-                 
+                <Row style={{display:"flex",justifyContent:"center"}}>
+                <img src = {pic} style={{width:"200px"}}/>
+                </Row>
                 <Row style={{marginBottom:"2%"}}>
-                    <div className='title'>Description</div>
+                    <div className='title'>About</div>
                     <div className='BODY'>
                       body
                     </div>
                 </Row>
-                <Row style={{marginBottom:"2%"}}>
+                <Row>
                   <Col style={{display:"flex"}}>
-                    <span className='title'>Email:</span>
-                    <span style={{marginLeft:"1%",paddingTop:"15px",fontSize:"120%"}}>
+                    <span style={{fontSize:"120%"}}>Email:</span>
+                    <span style={{marginLeft:"1%",fontSize:"120%",color:'blue'}}>
                       vishunayak2001@gmail.com
                     </span>
                   </Col>
                 </Row>
                 <Row>
                   <Col style={{display:"flex"}}>
-                    <span className='title'>Visit:</span>
-                    <span style={{marginLeft:"1%",paddingTop:"18px",wordBreak:"break-all"}}>
+                    <span style={{fontSize:"120%"}}>Visit:</span>
+                    <span style={{marginLeft:"1%",wordBreak:"break-all",fontSize:"120%",color:'blue'}}>
                     http://localhost:3000/mycompanydashboard
                     </span>
                   </Col>

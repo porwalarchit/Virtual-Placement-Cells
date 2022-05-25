@@ -41,7 +41,7 @@ function UpdateProfile() {
                    <Form.Control type="text" placeholder="website" />
                    </FloatingLabel>
                    <Form.Group className="mb-3" >
-    <Form.Label>Add/Update Image</Form.Label>
+    <Form.Label>New Image</Form.Label>
     <Form.Control type="file" placeholder="Image" />
     </Form.Group>
     <Button type='submit' className='but1 px-4 py-1'>SUBMIT</Button>

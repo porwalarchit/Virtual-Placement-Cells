@@ -11,6 +11,9 @@ import PostJobs from './Components/PostJobs';
 import UpdateProfile from './Components/UpdateProfile'
 import Applications from './Components/Applications'
 import Colleges from './Components/Colleges'
+import SetCollegeProfile from './Components/SetCollegeProfile';
+import SetCompanyProfile from './Components/SetCompanyProfile';
+import MyCollegeDashboard from './Components/MyCollegeDashboard';
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
       <Route exact path='/UpdateProfile' element = {<UpdateProfile/>}/>
       <Route exact path='/Applications' element = {<Applications/>}/>
       <Route exact path='/Colleges' element = {<Colleges/>}/>
+      <Route exact path='/setcollege' element = {<SetCollegeProfile/>}/>
+      <Route exact path='/setcompany' element = {<SetCompanyProfile/>}/>
+      <Route exact path='/mycompanydashboard' element = {<MyCollegeDashboard/>}/>
     </Routes>
     </BrowserRouter>
   )

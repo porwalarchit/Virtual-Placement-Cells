@@ -19,7 +19,8 @@ function CompanySignup() {
             <input required placeholder='Email' style={{paddingLeft:"2%",marginBottom:"2%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>
             <input required placeholder='Password' style={{paddingLeft:"2%",marginBottom:"2%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>
             <input required placeholder='Confirm Password' style={{paddingLeft:"2%",marginBottom:"5%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px",marginRight:"100%"}}/>
-            <div><input type="checkbox" required/><span style={{marginRight:"2%"}}> I have read and confirmed the Terms of Agreement.. </span><Button style={{padding:"8px 40px",borderRadius:"25px",color:"white",backgroundColor:"black",fontSize:"110%",fontWeight:"bold",fontFamily:"sans-serif"}}>Login</Button></div>
+            <div><input type="checkbox" required/><span style={{marginRight:"2%"}}> I have read and confirmed the Terms of Agreement.. </span>
+            <Link to='/setcompany'><Button style={{padding:"8px 40px",borderRadius:"25px",color:"white",backgroundColor:"black",fontSize:"110%",fontWeight:"bold",fontFamily:"sans-serif"}}>Login</Button></Link></div>
         </Form>
         </Col>
         <Col xs={10} md={10}  xl = {5} style={{display:"flex",justifyContent:"center"}}>
