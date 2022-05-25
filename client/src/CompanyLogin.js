@@ -24,7 +24,7 @@ function CompanyLogin() {
     <Row style={{margin:"10% 1%",display:"flex"}} >
         <Col  xs={10} sm={10} md={6}>
         <div style={{marginBottom:"25px",fontSize:"360%",fontWeight:"bolder",fontFamily:"sans-serif"}}>Login</div>
-        <span style={{fontSize:"90%",fontFamily:"sans-serif"}}>New User?<Link to = "/institutesignup"> Try Signing In.</Link></span>
+        <span style={{fontSize:"90%",fontFamily:"sans-serif"}}>New User?<Link to = "/companysignup"> Try Signing In.</Link></span>
         <Form style={{marginTop:"5%",marginBottom:"2%"}}>
             <input onChange ={(e)=>{setEmail(e.target.value);}} required placeholder='Email' style={{paddingLeft:"2%",marginBottom:"10%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>
             <input onChange ={(e)=>{setPass(e.target.value);}} required placeholder='Password' style={{paddingLeft:"2%",marginBottom:"10%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>

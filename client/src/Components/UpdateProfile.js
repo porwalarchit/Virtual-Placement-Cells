@@ -2,7 +2,7 @@ import React from 'react'
 import { Container,Row,Col,Form,Button, FloatingLabel } from 'react-bootstrap'
 import CompanyProfile from './CompanyProfile'
 import './CompanyProfile.css'
-import pic from '../Images/Ellipse 3.png'
+import pic from '../Images/login.png'
 
 function UpdateProfile() {
   return (
@@ -25,6 +25,8 @@ function UpdateProfile() {
                     Update Profile
                   </Col>
                 </Row>
+                <Row>
+                  <Col>
                  <Form>
                  <FloatingLabel label="Company Name" className="mb-3">
                    <Form.Control type="text" placeholder="Company Name" />
@@ -44,6 +46,11 @@ function UpdateProfile() {
     </Form.Group>
     <Button type='submit' className='but1 px-4 py-1'>SUBMIT</Button>
                  </Form>
+                 </Col>
+                 <Col lg={3} sm = {12} xs={12}>
+                 <img src={pic} style={{width:"350px"}}/>
+                 </Col>
+                 </Row>
             </Col>
             </Row>
         </Container>
