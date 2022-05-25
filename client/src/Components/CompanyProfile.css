@@ -1,12 +1,46 @@
-.but{
+.but2{
     border:none;
     font-size:160%;
     color:white;
     background-color:black;
     margin-bottom:10%;
 }
+.but1{
+    border:none;
+    font-size:160%;
+    color:white;
+    background-color: cadetblue;
+    margin-bottom:10%;
+}
+.but2:hover{
+    background-color: cadetblue;
+}
 .inp{
     padding:5%;
     width:500%;
     height:40px;
     border-radius:20px;}
+.Heading{
+    font-size: 300%;
+    margin: 6% 0%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+    font-family:sans-serif;
+    font-weight: 600;
+}
+.title{
+    font-size: 220%;
+    font-family:sans-serif;
+    font-weight: 500;
+    margin-right:"2%"
+}
+.BODY{
+    margin: 1% 1%;
+    padding:1%;
+    width: 90%;
+    overflow: auto;
+    border: dimgrey solid;
+    word-break: break-all;
+    border-radius: 15px;
+}

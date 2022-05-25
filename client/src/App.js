@@ -5,8 +5,12 @@ import CompanyLogin from './CompanyLogin';
 import CompanySignup from './CompanySignup';
 import InstituteSignup from './InstituteSignUp';
 import InstituteLogin from './InstituteLogin';
-import MyDashboard from './Components/MyDashboard';
+import MyCompanyDashboard from './Components/MyCompanyDashboard';
 import CompanyProfile from './Components/CompanyProfile';
+import PostJobs from './Components/PostJobs';
+import UpdateProfile from './Components/UpdateProfile'
+import Applications from './Components/Applications'
+import Colleges from './Components/Colleges'
 
 function App() {
   return (
@@ -17,8 +21,11 @@ function App() {
       <Route exact path='/companysignup' element = {<CompanySignup/>}/>
       <Route exact path='/institutelogin' element = {<InstituteLogin/>}/>
       <Route exact path='/institutesignup' element = {<InstituteSignup/>}/>
-      <Route exact path='/mydashboard' element = {<MyDashboard/>}/>
-      <Route exact path='/cmp' element = {<CompanyProfile/>}/>
+      <Route exact path='/mycompanydashboard' element = {<MyCompanyDashboard/>}/>
+      <Route exact path='/PostJobs' element = {<PostJobs/>}/>
+      <Route exact path='/UpdateProfile' element = {<UpdateProfile/>}/>
+      <Route exact path='/Applications' element = {<Applications/>}/>
+      <Route exact path='/Colleges' element = {<Colleges/>}/>
     </Routes>
     </BrowserRouter>
   )
