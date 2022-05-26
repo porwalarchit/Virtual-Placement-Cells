@@ -14,6 +14,7 @@ import Colleges from './Components/Colleges'
 import SetCollegeProfile from './Components/SetCollegeProfile';
 import SetCompanyProfile from './Components/SetCompanyProfile';
 import MyCollegeDashboard from './Components/MyCollegeDashboard';
+import ContactUs from './Components/ContactUs';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Route exact path='/setcollege' element = {<SetCollegeProfile/>}/>
       <Route exact path='/setcompany' element = {<SetCompanyProfile/>}/>
       <Route exact path='/mycompanydashboard' element = {<MyCollegeDashboard/>}/>
+      <Route exact path='/comcon' element = {<ContactUs/>}/>
     </Routes>
     </BrowserRouter>
   )

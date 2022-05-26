@@ -1,25 +1,29 @@
 .but2{
     border:none;
-    font-size:160%;
+    font-size:120%;
     color:white;
     background-color:black;
     margin-bottom:10%;
 }
 .but1{
     border:none;
-    font-size:160%;
+    font-size:120%;
     color:white;
-    background-color: cadetblue;
+    background-color:cadetblue;
     margin-bottom:10%;
 }
 .but2:hover{
     background-color: cadetblue;
 }
+.but1:hover{
+    background-color: cadetblue;
+}
 .inp{
-    padding:5%;
+    margin-top: 1%;
+    padding:4% 2%;
     width:500%;
     height:40px;
-    border-radius:20px;}
+    border-radius:12px;}
 .Heading{
     font-size: 300%;
     margin: 6% 0%;
@@ -40,7 +44,12 @@
     padding:1%;
     width: 90%;
     overflow: auto;
-    border: dimgrey solid;
+    border: rgb(154, 145, 83) dashed;
     word-break: break-all;
     border-radius: 15px;
+    border-width: 3px;
+    font-size: 120%
+}
+.icon{
+    margin-right: 2px;
 }

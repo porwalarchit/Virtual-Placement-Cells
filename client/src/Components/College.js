@@ -4,7 +4,7 @@ import pic from '../Images/Ellipse 3.png'
 
 function College() {
   return (
-    <Row style={{backgroundColor:" rgba(217, 217, 217, 0.5)",margin:"2%",padding:"2%",borderRadius:"20px"}}>
+    <Row style={{backgroundColor:" rgba(217, 217, 217, 0.6)",margin:"2%",padding:"2%",borderRadius:"20px"}}>
         <Col lg={2} sm= {12} md = {2} xs={12} xl={2}>
         <img src={pic} style={{width:"80px"}}/>
         </Col>

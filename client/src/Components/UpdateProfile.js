@@ -6,20 +6,18 @@ import pic from '../Images/login.png'
 
 function UpdateProfile() {
   return (
+    <React.Fragment>
     <Container fluid>
           <Row>
-          <CompanyProfile/>
-          <Col xl="9" lg="9" md = "9" sm ="12" xs="12" style={{marginTop:"1%",marginBottom:"10%"}}>
-              <Row >
-                <Col sm = {12} xs={12} md={6} lg={6} >
-                  <Form style={{display:"flex"}}>
-                <input placeholder="Search College" className='inp'/>
-                <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
-                </Form></Col>
-                <Col style={{display:"flex",justifyContent:"end"}}>
-                logout
-                </Col>
-                </Row>
+          <CompanyProfile val = '2'/>
+          <Col xl="10" lg="10" md = "10" sm ="12" xs="12" style={{marginTop:"1%",marginBottom:"10%"}}>
+          <Row  style={{display:"flex",justifyContent:"end"}}>
+          <Col sm = {12} xs={12} md={6} lg={6}>
+            <Form style={{display:"flex"}}>
+          <input placeholder="Search College" className='inp'/>
+          <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
+          </Form></Col>
+          </Row>
                 <Row>
                   <Col className='Heading'>
                     Update Profile
@@ -44,16 +42,17 @@ function UpdateProfile() {
     <Form.Label>New Image</Form.Label>
     <Form.Control type="file" placeholder="Image" />
     </Form.Group>
-    <Button type='submit' className='but1 px-4 py-1'>SUBMIT</Button>
+    <Button type='submit' style={{backgroundColor:"cadetblue",fontSize:"100%",padding:"1% 2%"}}>SUBMIT</Button>
                  </Form>
                  </Col>
                  <Col lg={3} sm = {12} xs={12}>
-                 <img src={pic} style={{width:"350px"}}/>
+                 <img src={pic} style={{width:"300px"}}/>
                  </Col>
                  </Row>
             </Col>
             </Row>
         </Container>
+        </React.Fragment>
   )
 }
 
