@@ -9,11 +9,10 @@ const collegeLogin = async (req, res) => {
             if (user) {
                 const validPassword = await bcrypt.compare(req.body.password, user.hashPassword);
                 if (validPassword) {
-
                     // Setting up jwt access token while logging in.
                     const userPayload = {id: user._id};
                     const accessToken = jwt.sign(userPayload, process.env.JWT_SECRET, {
-                         expiresIn: '3h' 
+                         expiresIn: '12h' 
                     });
 
                     return res.status(201).json({

@@ -10,7 +10,7 @@ const companyLogin = async (req, res) => {
 
                 const userPayload = {id: user._id};
                 const accessToken = jwt.sign(userPayload, process.env.JWT_SECRET, {
-                    expiresIn:'3h'
+                    expiresIn:'12h'
                 })
 
                 if (validPassword) {
