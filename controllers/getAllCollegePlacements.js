@@ -19,7 +19,7 @@ const getAllCollegePlacements = async (req, res) => {
                     if (err) {
                         return res.status(301).json(err);
                     }
-                    else if (placementDetails === []) {
+                    else if (JSON.stringify(placementDetails) === "[]") {
                         return res.status(302).json({
                             message: "No Placement Record"
                         })
