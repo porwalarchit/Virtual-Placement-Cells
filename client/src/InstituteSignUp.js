@@ -20,7 +20,7 @@ function InstituteSignUp() {
             <input required placeholder='Password' style={{paddingLeft:"2%",marginBottom:"3%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>
             <input required placeholder='Confirm Password' style={{paddingLeft:"2%",marginBottom:"7%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px",marginRight:"100%"}}/>
             <div><input type="checkbox" required/><span style={{marginRight:"2%"}}> I have read and confirmed the Terms of Agreement.. </span>
-            <Link to='/setcollege'><Button style={{padding:"8px 40px",borderRadius:"25px",color:"white",backgroundColor:"black",fontSize:"110%",fontWeight:"bold",fontFamily:"sans-serif"}}>Login</Button></Link></div>
+            <Link to='/setcollege'><Button style={{padding:"8px 40px",borderRadius:"25px",color:"white",backgroundColor:"black",fontSize:"110%",fontWeight:"bold",fontFamily:"sans-serif"}}>Sign Up</Button></Link></div>
         </Form>
         </Col>
         <Col xs={10} md={10}  xl = {5} style={{display:"flex",justifyContent:"center"}}>

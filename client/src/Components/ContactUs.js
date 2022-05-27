@@ -10,7 +10,7 @@ function ContactUs() {
             <Container fluid>
               <Row>
               <CompanyProfile  val = '6'/>
-              <Col xl="10" lg="10" md = "10" sm ="12" xs="12" style={{marginTop:"1%",marginBottom:"10%"}}>
+              <Col xl="10" lg="10" md = "9" sm ="12" xs="12" style={{marginTop:"1%",marginBottom:"10%"}}>
               <Row  style={{display:"flex",justifyContent:"end"}}>
               <Col sm = {12} xs={12} md={6} lg={6}>
                 <Form style={{display:"flex"}}>
