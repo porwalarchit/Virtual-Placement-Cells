@@ -21,13 +21,14 @@ const jobSchema = new mongoose.Schema({
         type:String,
         required:[true, "Please enter Job Requriements"],
     },
+    jobQualifications:{
+        type:String,
+    },
     jobType:{
         type:String,
-        required:[true, "Please enter Job Requriements"],
     },
     duration:{
         type:String,
-        required:[true, "Please enter Duration of Job"],
     },
     jobPerks:{
         type: [{

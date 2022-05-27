@@ -18,7 +18,6 @@ const placementSchema = new mongoose.Schema({
     },
     package:{
         type:String,
-        required:[true, "Please enter Student's Package"],
     },
     studentImage:{
         type:String,
