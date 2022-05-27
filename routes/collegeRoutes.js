@@ -14,6 +14,7 @@ const deletePlacement = require("../controllers/deletePlacement");
 const getAllCompany = require("../controllers/getAllCompany");
 const getAllCompanyJobs = require("../controllers/getAllCompanyJobs");
 const searchCompany = require("../controllers/searchCompany");
+const { applyforCompany, appliedJobs } = require("../controllers/applyforCompany");
 
 
 router.post('/register', collegeSignup);
@@ -33,5 +34,9 @@ router.get('/getAllCompany', authenticateToken, getAllCompany);
 router.get('/getAllCompany/jobs/:id', authenticateToken, getAllCompanyJobs);
 
 router.get('/searchCompany', authenticateToken, searchCompany);
+
+router.post('/applyforCompany/:jobid', authenticateToken, applyforCompany);
+
+router.get('/appliedJobs', authenticateToken, appliedJobs)
 
 module.exports = router;
