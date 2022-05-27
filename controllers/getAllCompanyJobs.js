@@ -21,7 +21,6 @@ const getAllCompanyJobs = (req, res) => {
                         message: "No Jobs Found",
                     })
                 }
-                console.log(typeof tmp);
                 return res.status(201).json(
                     result
                 )

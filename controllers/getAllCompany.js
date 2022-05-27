@@ -8,7 +8,6 @@ const getAllCompany = async(req, res)=>{
                     err
                 })
             }
-
             const filteredArr = result.map((company)=>{
                 const {hashPassword, ...others} =company._doc
                 return others
