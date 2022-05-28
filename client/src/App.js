@@ -14,6 +14,10 @@ import SetCollegeProfile from './Components/SetCollegeProfile';
 import SetCompanyProfile from './Components/SetCompanyProfile';
 import MyCollegeDashboard from './College/MyCollegeDashboard';
 import ContactUs from './Components/ContactUs';
+import UpdateCollegeProfile from './College/UpdateCollegeProfile';
+import UpdatePlacement from './College/UpdatePlacement';
+import ViewJobs from './College/ViewJobs';
+import ViewApplication from './College/ViewApplication';
 
 function App() {
   return (
@@ -33,6 +37,10 @@ function App() {
       <Route exact path='/setcompany' element = {<SetCompanyProfile/>}/>
       <Route exact path='/mycollegedashboard' element = {<MyCollegeDashboard/>}/>
       <Route exact path='/comcon' element = {<ContactUs/>}/>
+      <Route exact path='/updatecollege' element = {<UpdateCollegeProfile/>}/>
+      <Route exact path='/updatecollege' element = {<UpdatePlacement/>}/>
+      <Route exact path='/updatecollege' element = {<ViewJobs/>}/>
+      <Route exact path='/updatecollege' element = {<ViewApplication/>}/>
     </Routes>
     </BrowserRouter>
   )

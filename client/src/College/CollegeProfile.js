@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import pic from '../Images/Ellipse 3.png'
 import '../Components/CompanyProfile.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCommenting, faGraduationCap,faIdCard,faMessage,faPaperPlane,faRightFromBracket,faUser } from '@fortawesome/free-solid-svg-icons'
+import { faCommenting, faGraduationCap,faIdCard,faMessage,faPaperPlane,faRightFromBracket,faSackDollar,faUser } from '@fortawesome/free-solid-svg-icons'
 
 function CollegeProfile({val}) {
     
@@ -61,14 +61,14 @@ useEffect(
             <div style={{fontSize:"160%",fontFamily:"sans-serif",fontWeight:"bold",marginBottom:"14%",textAlign:"center"}}>Virtual Placement Cell</div>
             <div style={{display:"flex",justifyContent:"center",marginBottom:"15%"}}><img src={pic} /> </div>
             <div style={{marginLeft:"7%",marginBottom:"20%",display:"flex",justifyContent:"center",flexDirection:"column"}}>
-                <Link id = '1' to = "/mycompanydashboard" >
+                <Link id = '1' to = "/mycollegedashboard" >
                   <div>
                     <Button  className={col1}>
                     <FontAwesomeIcon icon={faUser} className="icon"/>
                       My Dashboard</Button>
                     </div>
                 </Link>
-                <Link id = '2'to = "/UpdateProfile" >
+                <Link id = '2'to = "/updatecollege" >
                   <div>
                     <Button  className={col2}>
                     <FontAwesomeIcon icon={faIdCard} className="icon"/>
@@ -98,7 +98,7 @@ useEffect(
                     </Link>
                   <Link id = '7' to = "/comcon" >
                 <div><Button className={col7}>
-                <FontAwesomeIcon icon={faCommenting} className="icon"/>
+                <FontAwesomeIcon icon={faSackDollar} className="icon"/>
                   View Placements</Button></div>
                   </Link>
                   <Link id = '6' to = "/comcon" >

@@ -26,8 +26,8 @@ function UpdateCollegeProfile() {
                 <Row>
                   <Col>
                  <Form>
-                 <FloatingLabel label="Company Name" className="mb-3">
-                   <Form.Control type="text" placeholder="Company Name" />
+                 <FloatingLabel label="College Name" className="mb-3">
+                   <Form.Control type="text" placeholder="College Name" />
                    </FloatingLabel>
                    <FloatingLabel label="Email address" className="mb-3">
                    <Form.Control type="email" placeholder="name@example.com" />
