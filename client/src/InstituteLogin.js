@@ -20,12 +20,19 @@ function InstituteLogin() {
     {
       setMsg("ALL FIELDS REQUIRED");
       return;
-    }
+    } 
     axios.post("http://localhost:5000/college/login",config).then((resp)=>{
-      console.log(resp)
+      if(resp.status === 210)
+        {
+          setMsg(resp.data.msg);
+        }
+       else if(resp.status === 201)
+       {
+        localStorage.setItem('jwtToken',resp.data.accessToken);
       setMsg(resp.data.message);
       setStyle("success");
-      setTimeout(()=>{navigate("/mycollegedashboard")},3000);
+       setTimeout(()=>{navigate("/mycollegedashboard")},3000);}
+       
     }).catch((err)=>{
       setMsg(err.response.data.message);
     });

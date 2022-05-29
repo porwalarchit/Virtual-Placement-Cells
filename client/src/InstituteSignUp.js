@@ -27,9 +27,14 @@ function InstituteSignUp() {
     }
     axios.post("http://localhost:5000/college/register",config).then(
       (resp)=>{
-        setMsg("Successfully Registered");
+        if(resp.status === 210)
+        {
+          setMsg(resp.data.msg);
+        }
+        else if(resp.status === 201)
+        {setMsg("Successfully Registered");
         setStyle("success");
-        setTimeout(()=>{navigate("/setcollege")},2000);
+        setTimeout(()=>{navigate("/setcollege")},2000);}
       }
     ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})
   }

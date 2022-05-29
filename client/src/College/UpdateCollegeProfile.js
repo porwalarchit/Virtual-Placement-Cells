@@ -1,10 +1,48 @@
-import React from 'react'
-import { Container,Row,Col,Form,Button, FloatingLabel } from 'react-bootstrap'
+import React,{useState} from 'react'
+import { Alert,Container,Row,Col,Form,Button, FloatingLabel } from 'react-bootstrap'
 import CollegeProfile from './CollegeProfile'
 import '../Components/CompanyProfile.css'
 import pic from '../Images/Ellipse 3.png'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 function UpdateCollegeProfile() {
+  const [desc,setDesc] = useState("");
+  const [file,setFile] = useState([]);
+  const [web,setWeb] = useState("");
+  const [msg,setMsg] = useState("");
+  const [style,setStyle] = useState("danger");
+  const navigate = useNavigate();
+  const handleClick = (e)=>{
+    e.preventDefault() ;
+    console.log(localStorage.getItem('jwtToken'));
+    // if(desc ==="" || file ==="" || web ==="" )
+    // {
+    //   setMsg("ALL FIELDS REQUIRED");
+    //   return;
+    // }
+    let fd = new FormData() ; 
+    fd.append("profileImg",file[0]) ; 
+    fd.append("description",desc) ; 
+    fd.append("website",web)
+    const data = {
+      headers:{
+        authorization: localStorage.getItem("jwtToken"),
+        'Content-Type': 'multipart/form-data'
+      }
+    }
+    console.log(fd.values())
+    axios.patch("http://localhost:5000/college/update/profile",fd,data).then(
+      (resp)=>{
+        console.log(resp);
+        setMsg("Successfully Registered");
+        setStyle("success");
+        setTimeout(()=>{navigate("/mycollegedashboard")},2000);
+      }
+    ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})
+  }
+
+
   return (
     <React.Fragment>
     <Container fluid>
@@ -26,23 +64,21 @@ function UpdateCollegeProfile() {
                 <Row>
                   <Col>
                  <Form>
-                 <FloatingLabel label="College Name" className="mb-3">
-                   <Form.Control type="text" placeholder="College Name" />
-                   </FloatingLabel>
-                   <FloatingLabel label="Email address" className="mb-3">
-                   <Form.Control type="email" placeholder="name@example.com" />
-                   </FloatingLabel>
                    <FloatingLabel label="Description" className="mb-3">
-                   <Form.Control as="textarea" style={{height:"200px"}} maxLength="1000" placeholder="description about company"/>
+                   <Form.Control  onChange = {(e)=>{setDesc(e.target.value);}}  required as="textarea" style={{height:"200px"}} maxLength="1000" placeholder="description about company"/>
                    </FloatingLabel>
                  <FloatingLabel label="Website" className="mb-3">
-                   <Form.Control type="text" placeholder="website" />
+                   <Form.Control  onChange = {(e)=>{setWeb(e.target.value);}} required type="text" placeholder="website" />
                    </FloatingLabel>
                    <Form.Group className="mb-3" >
     <Form.Label>New Image</Form.Label>
-    <Form.Control type="file" placeholder="Image" />
+    <Form.Control  onChange = {(e)=>{setFile(e.target.files);console.log(file.path)}} type="file" placeholder="Image" />
     </Form.Group>
-    <Button type='submit' style={{backgroundColor:"cadetblue",fontSize:"100%",padding:"1% 2%"}}>SUBMIT</Button>
+    {msg&&
+            <Alert variant={style} style={{marginBottom:"3%"}} onClose={() => setMsg("")} dismissible>
+        {msg}
+      </Alert>}
+    <Button  onClick={handleClick} style={{backgroundColor:"cadetblue",fontSize:"100%",padding:"1% 2%"}}>SUBMIT</Button>
                  </Form>
                  </Col>
                  <Col lg={3} sm = {12} xs={12}>

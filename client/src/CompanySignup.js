@@ -27,9 +27,16 @@ function CompanySignup() {
     }
     axios.post("http://localhost:5000/company/signup",config).then(
       (resp)=>{
+        if(resp.status === 210)
+        {
+          setMsg(resp.data.msg);
+        }
+        else if(resp.status === 201)
+        {
         setMsg("Successfully Registered");
         setStyle("success");
         setTimeout(()=>{navigate("/setcompany")},2000);
+        }
       }
     ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})
   }
