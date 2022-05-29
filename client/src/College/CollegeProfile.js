@@ -75,14 +75,14 @@ useEffect(
                       Update Profile</Button>
                     </div>
                 </Link>
-                <Link id = '3' to = "/Colleges">
+                <Link id = '3' to = "/updateplacement">
                   <div>
                     <Button  className={col3}>
                     <FontAwesomeIcon icon={faGraduationCap} className="icon"/>
                        Update Placements</Button>
                     </div>
                 </Link>
-                <Link id = '4' to = "/PostJobs" >
+                <Link id = '4' to = "/ViewJobs" >
                   <div>
                     <Button className={col4}>
                     <FontAwesomeIcon icon={faPaperPlane} className="icon"/>
