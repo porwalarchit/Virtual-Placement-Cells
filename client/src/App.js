@@ -6,15 +6,19 @@ import CompanySignup from './CompanySignup';
 import InstituteSignup from './InstituteSignUp';
 import InstituteLogin from './InstituteLogin';
 import MyCompanyDashboard from './Components/MyCompanyDashboard';
-import CompanyProfile from './Components/CompanyProfile';
 import PostJobs from './Components/PostJobs';
 import UpdateProfile from './Components/UpdateProfile'
 import Applications from './Components/Applications'
 import Colleges from './Components/Colleges'
 import SetCollegeProfile from './Components/SetCollegeProfile';
 import SetCompanyProfile from './Components/SetCompanyProfile';
-import MyCollegeDashboard from './Components/MyCollegeDashboard';
+import MyCollegeDashboard from './College/MyCollegeDashboard';
 import ContactUs from './Components/ContactUs';
+import UpdateCollegeProfile from './College/UpdateCollegeProfile';
+import UpdatePlacement from './College/UpdatePlacement';
+import ViewJobs from './College/ViewJobs';
+import ViewApplication from './College/ViewApplication';
+import ViewPlacements from './College/ViewPlacements';
 
 function App() {
   return (
@@ -32,8 +36,13 @@ function App() {
       <Route exact path='/Colleges' element = {<Colleges/>}/>
       <Route exact path='/setcollege' element = {<SetCollegeProfile/>}/>
       <Route exact path='/setcompany' element = {<SetCompanyProfile/>}/>
-      <Route exact path='/mycompanydashboard' element = {<MyCollegeDashboard/>}/>
+      <Route exact path='/mycollegedashboard' element = {<MyCollegeDashboard/>}/>
       <Route exact path='/comcon' element = {<ContactUs/>}/>
+      <Route exact path='/updatecollege' element = {<UpdateCollegeProfile/>}/>
+      <Route exact path='/updateplacement' element = {<UpdatePlacement/>}/>
+      <Route exact path='/ViewJobs' element = {<ViewJobs/>}/>
+      <Route exact path='/ViewApplication' element = {<ViewApplication/>}/>
+      <Route exact path='/ViewPlacements' element = {<ViewPlacements/>}/>
     </Routes>
     </BrowserRouter>
   )

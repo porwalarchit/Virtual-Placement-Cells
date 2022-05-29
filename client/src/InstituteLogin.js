@@ -1,20 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import { Col, Row,Form,Button, Container} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Alert,Col, Row,Form,Button, Container} from 'react-bootstrap'
+import { Link, useNavigate } from 'react-router-dom'
 import pic from './Images/login.png'
 import axios from 'axios'
 
 function InstituteLogin() {
   const [email,setEmail] = useState("");
   const [pass,setPass] = useState("");
+  const [msg,setMsg] = useState("");
+  const [style,setStyle] = useState("danger");
   const config = {
-    Email: email,
-    Password: pass,
+    email: email,
+    password: pass,
   }
-  // const handleClick = (e)=>{
-  //   e.preventDefault() ;
-  //   const response = axios.post("http://localhost:3000/college/login",config).then(async)
-  // }
+  const navigate = useNavigate();
+  const handleClick = (e)=>{
+    e.preventDefault() ;
+    if(email ==="" || pass ==="" )
+    {
+      setMsg("ALL FIELDS REQUIRED");
+      return;
+    }
+    axios.post("http://localhost:5000/college/login",config).then((resp)=>{
+      console.log(resp)
+      setMsg(resp.data.message);
+      setStyle("success");
+      setTimeout(()=>{navigate("/mycollegedashboard")},3000);
+    }).catch((err)=>{
+      setMsg(err.response.data.message);
+    });
+  }
   return (
     <div>
         <Row style={{backgroundColor:"black",padding:"20px"}}>
@@ -26,9 +41,13 @@ function InstituteLogin() {
         <div style={{marginBottom:"25px",fontSize:"360%",fontWeight:"bolder",fontFamily:"sans-serif"}}>Login</div>
         <span style={{fontSize:"90%",fontFamily:"sans-serif"}}>New User?<Link to = "/institutesignup"> Try Signing In.</Link></span>
         <Form style={{marginTop:"5%",marginBottom:"2%"}}>
-            <input onChange ={(e)=>{setEmail(e.target.value);}} required placeholder='Email' style={{paddingLeft:"2%",marginBottom:"10%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>
-            <input onChange ={(e)=>{setPass(e.target.value);}} required placeholder='Password' style={{paddingLeft:"2%",marginBottom:"10%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>
-            <Button style={{padding:"8px 40px",borderRadius:"25px",color:"white",backgroundColor:"black",fontSize:"110%",fontWeight:"bold",fontFamily:"sans-serif"}}>Login</Button>
+            <input onChange ={(e)=>{setEmail(e.target.value);}} required placeholder='Email' style={{paddingLeft:"2%",marginBottom:"5%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>
+            <input type = "password" onChange ={(e)=>{setPass(e.target.value);}} required placeholder='Password' style={{paddingLeft:"2%",marginBottom:"5%",border:"none",filter:" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",width:"100%",height:"45px",borderRadius:"8px"}}/>
+            {msg&&
+            <Alert variant={style} style={{marginBottom:"3%"}} onClose={() => setMsg("")} dismissible>
+        {msg}
+      </Alert>}
+        <Button onClick = {handleClick} style={{padding:"8px 40px",borderRadius:"25px",color:"white",backgroundColor:"black",fontSize:"110%",fontWeight:"bold",fontFamily:"sans-serif"}}>Login</Button>    
         </Form>
         </Col>
         <Col xs={10} md={10}  xl = {6}  style={{display:"flex",justifyContent:"center"}}>

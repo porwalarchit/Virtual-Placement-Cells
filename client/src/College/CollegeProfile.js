@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { Button, Col} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import pic from '../Images/Ellipse 3.png'
-import './CompanyProfile.css'
+import '../Components/CompanyProfile.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCommenting, faGraduationCap,faIdCard,faMessage,faPaperPlane,faRightFromBracket,faUser } from '@fortawesome/free-solid-svg-icons'
+import { faCommenting, faGraduationCap,faIdCard,faMessage,faPaperPlane,faRightFromBracket,faSackDollar,faUser } from '@fortawesome/free-solid-svg-icons'
 
-function CompanyProfile({val}) {
-  //jack
+function CollegeProfile({val}) {
+    
   const[col1,setCol1] = useState('but2');
   const[col2,setCol2] = useState('but2');
   const[col3,setCol3] = useState('but2');
   const[col4,setCol4] = useState('but2');
   const[col5,setCol5] = useState('but2');
   const[col6,setCol6] = useState('but2');
+  const[col7,setCol7] = useState('but2');
 const handleClick1 = ()=>{
 setCol1('but1');
 }
@@ -32,6 +33,9 @@ const handleClick5 = ()=>{
 const handleClick6 = ()=>{
   setCol6('but1');
 }
+const handleClick7 = ()=>{
+  setCol7('but1');
+}
 useEffect(
   ()=>{
     if(val === '1')
@@ -46,6 +50,8 @@ useEffect(
     handleClick5();
     else if(val === '6')
     handleClick6();
+    else if(val === '7')
+    handleClick7();
   },[]
 )
 //jack ended component started
@@ -55,32 +61,32 @@ useEffect(
             <div style={{fontSize:"160%",fontFamily:"sans-serif",fontWeight:"bold",marginBottom:"14%",textAlign:"center"}}>Virtual Placement Cell</div>
             <div style={{display:"flex",justifyContent:"center",marginBottom:"15%"}}><img src={pic} /> </div>
             <div style={{marginLeft:"7%",marginBottom:"20%",display:"flex",justifyContent:"center",flexDirection:"column"}}>
-                <Link id = '1' to = "/mycompanydashboard" >
+                <Link id = '1' to = "/mycollegedashboard" >
                   <div>
                     <Button  className={col1}>
                     <FontAwesomeIcon icon={faUser} className="icon"/>
                       My Dashboard</Button>
                     </div>
                 </Link>
-                <Link id = '2'to = "/UpdateProfile" >
+                <Link id = '2'to = "/updatecollege" >
                   <div>
                     <Button  className={col2}>
                     <FontAwesomeIcon icon={faIdCard} className="icon"/>
                       Update Profile</Button>
                     </div>
                 </Link>
-                <Link id = '3' to = "/Colleges">
+                <Link id = '3' to = "/updateplacement">
                   <div>
                     <Button  className={col3}>
                     <FontAwesomeIcon icon={faGraduationCap} className="icon"/>
-                       College</Button>
+                       Update Placements</Button>
                     </div>
                 </Link>
-                <Link id = '4' to = "/PostJobs" >
+                <Link id = '4' to = "/ViewJobs" >
                   <div>
                     <Button className={col4}>
                     <FontAwesomeIcon icon={faPaperPlane} className="icon"/>
-                      Post Job</Button>
+                      View Jobs</Button>
                     </div>
                     </Link>
                 <Link id = '5' to = "/Applications" >
@@ -90,8 +96,13 @@ useEffect(
                       View Applications</Button>
                     </div>
                     </Link>
+                  <Link id = '7' to = "/comcon" >
+                <div><Button className={col7}>
+                <FontAwesomeIcon icon={faSackDollar} className="icon"/>
+                  View Placements</Button></div>
+                  </Link>
                   <Link id = '6' to = "/comcon" >
-                <div><Button id = "but6" className={col6}>
+                <div><Button className={col6}>
                 <FontAwesomeIcon icon={faCommenting} className="icon"/>
                   Contact Us</Button></div>
                   </Link>
@@ -104,4 +115,4 @@ useEffect(
   )
 }
 
-export default CompanyProfile
+export default CollegeProfile

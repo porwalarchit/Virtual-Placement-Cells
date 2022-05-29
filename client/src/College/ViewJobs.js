@@ -1,16 +1,15 @@
 import React from 'react'
-import { Container,Row,Col,Form,Button, FloatingLabel } from 'react-bootstrap'
-import CompanyProfile from './CompanyProfile'
-import './CompanyProfile.css'
-import pic from '../Images/login.png'
-import College from './College'
+import { Container,Row,Col,Form,Button} from 'react-bootstrap'
+import CollegeProfile from './CollegeProfile'
+import '../Components/CompanyProfile.css'
+import Job from './Job'
 
-function Colleges() {
+function ViewJobs() {
   return (
     <React.Fragment>
     <Container fluid>
           <Row>
-          <CompanyProfile val = '3'/>
+          <CollegeProfile val = '4'/>
           <Col xl="10" lg="10" md = "9" sm ="12" xs="12" style={{marginTop:"1%",marginBottom:"10%"}}>
           <Row  style={{display:"flex",justifyContent:"end"}}>
           <Col sm = {12} xs={12} md={6} lg={6}>
@@ -21,12 +20,12 @@ function Colleges() {
           </Row>
                 <Row>
                   <Col className='Heading'>
-                    Colleges
+                    View Jobs
                   </Col>
                 </Row>
-                  <College/>
-                  <College/>
-                  <College/>
+                  <Job/>
+                  <Job/>
+                  <Job/>
             </Col>
             </Row>
         </Container>
@@ -34,4 +33,4 @@ function Colleges() {
   )
 }
 
-export default Colleges
+export default ViewJobs

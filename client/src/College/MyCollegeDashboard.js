@@ -1,15 +1,15 @@
 import React from 'react'
 import { Container,Row,Col,Form,Button } from 'react-bootstrap'
-import CompanyProfile from './CompanyProfile'
-import './CompanyProfile.css'
+import CollegeProfile from './CollegeProfile'
+import '../Components/CompanyProfile.css'
 import pic from '../Images/Ellipse 3.png'
 
-function MyCompanyDashboard() {
+function MyCollegeDashboard() {
   return (
     <React.Fragment>
         <Container fluid>
           <Row>
-          <CompanyProfile  val = '1'/>
+          <CollegeProfile  val = '1'/>
           <Col xl="10" lg="10" md ="9" sm ="12" xs="12" style={{marginTop:"1%",marginBottom:"10%"}}>
           <Row  style={{display:"flex",justifyContent:"end"}}>
           <Col sm = {12} xs={12} md={6} lg={6}>
@@ -60,4 +60,4 @@ The company has been criticized for a lack of ethical standards,[5][6] working w
   )
 }
 
-export default MyCompanyDashboard
+export default MyCollegeDashboard

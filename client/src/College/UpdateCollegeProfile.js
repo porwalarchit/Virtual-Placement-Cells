@@ -1,15 +1,15 @@
 import React from 'react'
 import { Container,Row,Col,Form,Button, FloatingLabel } from 'react-bootstrap'
-import CompanyProfile from './CompanyProfile'
-import './CompanyProfile.css'
-import pic from '../Images/login.png'
+import CollegeProfile from './CollegeProfile'
+import '../Components/CompanyProfile.css'
+import pic from '../Images/Ellipse 3.png'
 
-function UpdateProfile() {
+function UpdateCollegeProfile() {
   return (
     <React.Fragment>
     <Container fluid>
           <Row>
-          <CompanyProfile val = '2'/>
+          <CollegeProfile val = '2'/>
           <Col xl="10" lg="10" md = "9" sm ="12" xs="12" style={{marginTop:"1%",marginBottom:"10%"}}>
           <Row  style={{display:"flex",justifyContent:"end"}}>
           <Col sm = {12} xs={12} md={6} lg={6}>
@@ -26,8 +26,8 @@ function UpdateProfile() {
                 <Row>
                   <Col>
                  <Form>
-                 <FloatingLabel label="Company Name" className="mb-3">
-                   <Form.Control type="text" placeholder="Company Name" />
+                 <FloatingLabel label="College Name" className="mb-3">
+                   <Form.Control type="text" placeholder="College Name" />
                    </FloatingLabel>
                    <FloatingLabel label="Email address" className="mb-3">
                    <Form.Control type="email" placeholder="name@example.com" />
@@ -56,4 +56,4 @@ function UpdateProfile() {
   )
 }
 
-export default UpdateProfile
+export default UpdateCollegeProfile
