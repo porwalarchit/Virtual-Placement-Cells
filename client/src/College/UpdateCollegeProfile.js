@@ -16,11 +16,11 @@ function UpdateCollegeProfile() {
   const handleClick = (e)=>{
     e.preventDefault() ;
     console.log(localStorage.getItem('jwtToken'));
-    // if(desc ==="" || file ==="" || web ==="" )
-    // {
-    //   setMsg("ALL FIELDS REQUIRED");
-    //   return;
-    // }
+    if(desc ==="" || file ==="" || web ==="" )
+    {
+      setMsg("ALL FIELDS REQUIRED");
+      return;
+    }
     let fd = new FormData() ; 
     fd.append("profileImg",file[0]) ; 
     fd.append("description",desc) ; 
@@ -58,7 +58,7 @@ function UpdateCollegeProfile() {
           </Row>
                 <Row>
                   <Col className='Heading'>
-                    Update Profile
+                    Update College Profile
                   </Col>
                 </Row>
                 <Row>
