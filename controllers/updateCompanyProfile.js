@@ -9,7 +9,11 @@ const updateCompanyProfile = async (req, res) => {
         });
 
         const company = req.user;
-        const updatedProfile = await Company.findByIdAndUpdate(company.id, { description: req.body.description, profileImg: result.url }, {
+        const updatedProfile = await Company.findByIdAndUpdate(company.id, { 
+            description: req.body.description,
+            website: req.body.website, 
+            profileImg: result.url 
+        }, {
             new: true,
             runValidators: true
         });

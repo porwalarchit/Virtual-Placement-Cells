@@ -23,6 +23,10 @@ const companySchema = new mongoose.Schema({
         type:String,
         default:"",
     },
+    website:{
+        type: String,
+        default: ""
+    }
 })
 
 module.exports = mongoose.model("Company", companySchema);

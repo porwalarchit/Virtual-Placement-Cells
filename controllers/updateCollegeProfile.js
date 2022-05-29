@@ -9,7 +9,11 @@ const updateCollegeProfile = async (req, res) => {
         });
         
         const college = req.user;
-        const updateUser = await College.findByIdAndUpdate(college.id, { description: req.body.description, profileImg: result.url }, {
+        const updateUser = await College.findByIdAndUpdate(college.id, { 
+            description: req.body.description, 
+            website: req.body.website, 
+            profileImg: result.url 
+        }, {
             new: true,
             runValidators: true
         });

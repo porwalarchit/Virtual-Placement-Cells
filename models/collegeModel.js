@@ -22,6 +22,10 @@ const CollegeSchema = new mongoose.Schema({
     description:{
         type:String,
     }, 
+    website:{
+        type: String,
+        default: ""
+    }
 })
 
 module.exports = mongoose.model('college', CollegeSchema);
