@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const authenticateToken = require("../middlewares/authenticateToken");
+const {validateSignupRequest, validateSigninRequest, isRequestValidated} = require("../middlewares/validator");
 
 const companySignup = require("../controllers/companySignup");
 const companyLogin = require("../controllers/companyLogin");
@@ -16,9 +17,9 @@ const deleteJob = require("../controllers/deleteJob");
 const searchCollege = require("../controllers/searchCollege");
 
 
-router.post('/signup', companySignup);
+router.post('/signup', validateSignupRequest, isRequestValidated, companySignup);
 
-router.post('/login', companyLogin)
+router.post('/login', validateSigninRequest, isRequestValidated, companyLogin)
 
 router.get('/profile', authenticateToken, getCompanyProfile);
 

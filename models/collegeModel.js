@@ -2,18 +2,18 @@ const mongoose = require("mongoose");
 
 const CollegeSchema = new mongoose.Schema({
     collegeName:{
-        type:String,
-        required:[true, "Please Enter College Name"],
-        unique:[true, "College Name Already Exists"],
+        type: String,
+        required: true,
+        unique: true,
     },
     email:{
         type:String,
-        required:[true, "Please enter Email"],
-        unique:[true, "Email already Exists"],
+        required: true,
+        unique: true,
     },
     hashPassword:{
         type:String,
-        required:[true, "Please enter Password"],
+        required: true,
     }, 
     profileImg:{
         type: String,
