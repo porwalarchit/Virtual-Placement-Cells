@@ -28,7 +28,6 @@ const addJob = async(req, res)=>{
         }
         
     } catch (error) {
-        console.log(error.message.split(":")[2].trim());
         return res.status(500).json({
             message: error.message.split(":")[2].trim()
         });

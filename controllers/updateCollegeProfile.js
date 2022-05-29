@@ -26,7 +26,6 @@ const updateCollegeProfile = async (req, res) => {
             others
         })
     } catch (error) {
-        console.log(error);
         return res.status(401).json({
             error
         })

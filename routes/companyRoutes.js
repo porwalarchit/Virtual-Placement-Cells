@@ -34,4 +34,6 @@ router.get('/getAllCollege/placements/:id', authenticateToken, getAllCollegePlac
 
 router.get('/searchCollege', authenticateToken, searchCollege);
 
+// Accept or Reject College Application API
+
 module.exports = router;
