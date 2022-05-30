@@ -3,31 +3,21 @@ const Job = require("../models/jobModel");
 
 const getAllCompanyJobs = (req, res) => {
     try {
-        Company.findById(req.params.id).exec((err, company) => {
+        Job.find().exec((err, jobs) => {
             if (err) {
                 return res.status(401).json(err)
             }
-            else if (company == null) {
-                return res.status(301).json({
-                    message: "No Company Found with given id",
+            else if (JSON.stringify(jobs) == "[]") {
+                return res.status(303).json({
+                    message: "No Jobs Found",
                 })
             }
-            Job.find({ companyId: company._id }).exec((err, result) => {
-                if (err) {
-                    return res.status(302).json(err)
-                }
-                else if (JSON.stringify(result) == "[]") {
-                    return res.status(303).json({
-                        message: "No Jobs Found",
-                    })
-                }
-                return res.status(201).json(
-                    result
-                )
-            })
+            return res.status(201).json(
+                jobs
+            )
         })
     } catch (error) {
-        return res.status(500).json(error)
+        return res.status(500).json(error);
     }
 }
 

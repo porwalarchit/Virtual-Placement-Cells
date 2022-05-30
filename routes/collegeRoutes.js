@@ -11,6 +11,7 @@ const upload = require("../utils/multer");
 const updateCollegeProfile = require("../controllers/updateCollegeProfile");
 
 const addPlacement = require("../controllers/addPlacement");
+const getAllPlacements = require("../controllers/getAllPlacements");
 const deletePlacement = require("../controllers/deletePlacement");
 const getAllCompany = require("../controllers/getAllCompany");
 const getAllCompanyJobs = require("../controllers/getAllCompanyJobs");
@@ -28,11 +29,13 @@ router.patch('/update/profile', authenticateToken, upload.single("profileImg"), 
 
 router.post('/addPlacement', authenticateToken, upload.single("studentImage"), addPlacement);
 
+router.get('/viewPlacement', authenticateToken, getAllPlacements);
+
 router.delete('/deletePlacement/:id', authenticateToken, deletePlacement);
 
 router.get('/getAllCompany', authenticateToken, getAllCompany);
 
-router.get('/getAllCompany/jobs/:id', authenticateToken, getAllCompanyJobs);
+router.get('/getAllCompanyJobs', authenticateToken, getAllCompanyJobs);
 
 router.get('/searchCompany', authenticateToken, searchCompany);
 
