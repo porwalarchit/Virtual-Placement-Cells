@@ -1,10 +1,52 @@
-import React from 'react'
-import { Container,Row,Col,Form,Button, FloatingLabel} from 'react-bootstrap'
+import React, { useState } from 'react'
+import {Alert,Container,Row,Col,Form,Button, FloatingLabel} from 'react-bootstrap'
 import CompanyProfile from './CompanyProfile'
 import './CompanyProfile.css'
 import pic from '../Images/login.png'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function PostJobs() {
+  const [data,setData] = useState("");
+  const [msg,setMsg] = useState("");
+  const [jn,setJn] = useState("");
+  const [cn,setCn] = useState("");
+  const [des,setDes] = useState("");
+  const [req,setReq] = useState("");
+  const [dur,setDur] = useState("");
+  const [date,setDate] = useState("");
+  const [type,setType] = useState("");
+  const [stipe,setStipe] = useState("");
+  const [style,setStyle] = useState("danger");
+  const navigate = useNavigate();
+  const config={
+                companyName: cn,
+                jobName: jn,
+                jobDescription: des,
+                jobRequirements: req,
+                jobType:type,
+                duration: dur,
+                jobPerks: stipe,
+                deadline: date
+  }
+
+  const con = {
+    headers:{
+      authorization:localStorage.getItem('jwtToken'),
+    }
+  }
+
+  const handleClick = (e)=>{
+   e.preventDefault();
+    axios.post("http://localhost:5000/company/addJob",config,con).then((resp)=>{
+      setStyle("success");
+      setMsg(resp.data.message);
+      setTimeout(()=>{navigate("/mycompanydashboard")},2000);
+      }).catch((err)=>{
+        setMsg("Some Error Occured");
+      })
+ }
+
   return (
     <React.Fragment>
     <Container fluid>
@@ -27,36 +69,39 @@ function PostJobs() {
                   <Col>
                  <Form>
                  <FloatingLabel label="Job Name" className="mb-3">
-                   <Form.Control type="text" placeholder="Job Name" />
+                   <Form.Control onChange={(e)=>{setJn(e.target.value)}} required type="text" placeholder="Job Name" />
                    </FloatingLabel>
                    <FloatingLabel label="Company Name" className="mb-3">
-                   <Form.Control type="text" placeholder="Company Name" />
+                   <Form.Control onChange={(e)=>{setCn(e.target.value)}} required type="text" placeholder="Company Name" />
                    </FloatingLabel>
                    <FloatingLabel label="Job Description (not more than 6000 words)" className="mb-3">
-                   <Form.Control as="textarea" style={{height:"200px"}} maxLength="6000" placeholder="description about company"/>
+                   <Form.Control onChange={(e)=>{setDes(e.target.value)}} required as="textarea" style={{height:"200px"}} maxLength="6000" placeholder="description about company"/>
                    </FloatingLabel>
                  <FloatingLabel label="Requirements" className="mb-3">
-                   <Form.Control type="text" placeholder="website" />
+                   <Form.Control onChange={(e)=>{setReq(e.target.value)}} required type="text" placeholder="website" />
                    </FloatingLabel>
                    <FloatingLabel label="Duration" className="mb-3">
-                   <Form.Control type="text" placeholder="Duration" />
+                   <Form.Control onChange={(e)=>{setDur(e.target.value)}} required type="text" placeholder="Duration" />
                    </FloatingLabel>
                    <FloatingLabel label="Job type" className="mb-3">
-                   <Form.Select >
+                   <Form.Select  onChange={(e)=>{setType(e.target.value)}} required >
                      <option>Full-Time</option>
-                     <option value="1">Internship</option>
-                     <option value="2">Contract</option>
-                     <option value="3">Associate</option>
+                     <option value="Internship">Internship</option>
+                     <option value="Contract">Contract</option>
+                     <option value="Associate">Associate</option>
                      </Form.Select>
                    </FloatingLabel>
                    <FloatingLabel label="Stipend" className="mb-3">
-                   <Form.Control type="number" placeholder="website" />
+                   <Form.Control onChange={(e)=>{setStipe(e.target.value)}} required type="number" placeholder="website" />
                    </FloatingLabel>
                    <FloatingLabel label="Deadline" className="mb-3">
-                   <Form.Control type="date" placeholder="website" />
+                   <Form.Control onChange={(e)=>{setDate(e.target.value)}} required type="date" placeholder="website" />
                    </FloatingLabel>
-                   
-    <Button type='submit'style={{backgroundColor:"cadetblue",fontSize:"100%",padding:"1% 2%"}}>POST HIRING</Button>
+                   {msg&&
+            <Alert variant={style} style={{marginBottom:"3%"}} onClose={() => setMsg("")} dismissible>
+        {msg}
+      </Alert>}
+    <Button onClick = {handleClick} style={{backgroundColor:"cadetblue",fontSize:"100%",padding:"1% 2%"}}>POST HIRING</Button>
                  </Form>
                  </Col>
                  <Col lg={3} sm = {12} xs={12}>

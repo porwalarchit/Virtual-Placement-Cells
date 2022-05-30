@@ -37,7 +37,7 @@ function UpdateProfile() {
         console.log(resp);
         setMsg("Successfully Registered");
         setStyle("success");
-        setTimeout(()=>{navigate("/mycollegedashboard")},2000);
+        setTimeout(()=>{navigate("/mycompanydashboard")},2000);
       }
     ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})
   }
@@ -65,7 +65,7 @@ function UpdateProfile() {
                   <Col>
                  <Form>
                    <FloatingLabel label="Description" className="mb-3">
-                   <Form.Control  onChange = {(e)=>{setDesc(e.target.value);}} required as="textarea" style={{height:"200px"}} maxLength="1000" placeholder="description about company"/>
+                   <Form.Control  onChange = {(e)=>{setDesc(e.target.value);}} required as="textarea" style={{height:"200px"}} maxLength="1200" placeholder="description about company"/>
                    </FloatingLabel>
                  <FloatingLabel label="Website" className="mb-3">
                    <Form.Control onChange = {(e)=>{setWeb(e.target.value);}} required type="text" placeholder="website" />

@@ -1,11 +1,26 @@
-import React from 'react'
-import { Container,Row,Col,Form,Button, FloatingLabel } from 'react-bootstrap'
+import React,{useEffect,useState} from 'react'
+import { Container,Row,Col,Form,Button} from 'react-bootstrap'
 import CompanyProfile from './CompanyProfile'
 import './CompanyProfile.css'
-import pic from '../Images/login.png'
+import axios from 'axios'
 import College from './College'
 
 function Colleges() {
+  const [data,setData] = useState([]);
+const [msg,setMsg] = useState("");
+const config = {
+  headers:{
+    authorization:localStorage.getItem('jwtToken'),
+  }
+}
+useEffect(()=>{
+  axios.get("http://localhost:5000/company/getAllCollege",config).then((resp)=>{
+  setData(resp.data);
+    }).catch((err)=>{
+      setMsg("Some Error Occured");
+    })
+},[]);
+
   return (
     <React.Fragment>
     <Container fluid>
@@ -24,9 +39,16 @@ function Colleges() {
                     Colleges
                   </Col>
                 </Row>
-                  <College/>
-                  <College/>
-                  <College/>
+                {data.length === 0 &&
+                setTimeout(() => {
+                  return <h1>No College Found</h1>
+                }, 3000)
+                }
+                  {
+                   data.map((d)=>(
+                      <College key = {data._id} dt = {d}></College>
+                   ))
+                  }
             </Col>
             </Row>
         </Container>

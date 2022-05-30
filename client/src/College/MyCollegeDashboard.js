@@ -1,10 +1,26 @@
-import React from 'react'
-import { Container,Row,Col,Form,Button } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import { Alert,Container,Row,Col,Form,Button } from 'react-bootstrap'
 import CollegeProfile from './CollegeProfile'
 import '../Components/CompanyProfile.css'
-import pic from '../Images/Ellipse 3.png'
+import axios from 'axios'
 
 function MyCollegeDashboard() {
+    const [data,setData] = useState("");
+const [msg,setMsg] = useState("");
+const config = {
+  headers:{
+    authorization:localStorage.getItem('jwtToken'),
+  }
+}
+useEffect(()=>{
+  axios.get("http://localhost:5000/college/profile",config).then((resp)=>{
+   setData(resp.data.user);
+    }).catch((err)=>{
+      setMsg("Some Error Occured");
+    })
+},[]);
+
+
   return (
     <React.Fragment>
         <Container fluid>
@@ -19,38 +35,37 @@ function MyCollegeDashboard() {
           </Form></Col>
           </Row>
                 <Row>
+                {msg&&
+            <Alert variant="danger" style={{marginBottom:"3%"}} onClose={() => setMsg("")} dismissible>
+        {msg}
+      </Alert>}
                   <Col className='Heading'>
-                    GOLDMAN SACHS
+                    Welcome {data.companyName}
                   </Col>
                 </Row>
                 <Row style={{display:"flex",justifyContent:"center"}}>
-                <img src = {pic} style={{width:"200px"}}/>
+                <img src = {data.profileImg} style={{width:"200px",borderRadius:"50px",marginBottom:"4%"}}/>
                 </Row>
                 <Row style={{display:"flex",justifyContent:"center"}}>
                     {/* <div className='title'>About</div> */}
                     <div className='BODY'>
-                    The Goldman Sachs Group, Inc. (/ˈsæks/) is an American multinational investment bank and financial services company headquartered in New York City.
-
-Goldman Sachs was founded in 1869 and is headquartered at 200 West Street in Lower Manhattan with regional headquarters in London, Warsaw, Bangalore, Hong Kong, Tokyo and Salt Lake City and additional offices in other international financial centers.[2]It ranks 2nd on the list of investment banks in the world by revenue[3] and is ranked 59th on the Fortune 500 list of the largest United States corporations by total revenue.[4] It is considered a systemically important financial institution by the Financial Stability Board.
-
-The company has been criticized for a lack of ethical standards,[5][6] working with dictatorial regimes,[7] cozy relationships with the US federal government via a "revolving door" of former employees,[8] and driving up prices of commodities through futures speculation.[9] While the company has appeared on the 100 Best Companies to Work For list compiled by Fortune, primarily due to its high compensation levels,[10][11] it has also been criticized by its employees for 100-hour work weeks, high levels of employee dissatisfaction among first-year analysts, abusive treatment by superiors, a lack of mental health resources, and extremely high levels of stress in the workplace leading to physical discomfort.
-                    </div>
+                    {data.description}</div>
                 </Row>
                 <div style={{display:"flex",justifyContent:"center",marginTop:"3%"}}>
                 <div style={{padding:"0.5%",fontWeight:"bold",width:"330px",textAlign:"center",border:"dashed rgb(154, 145, 83)",borderRadius:"15px"}}>
                     <span>
                     <span style={{fontSize:"120%",fontWeight:"bold"}}>Email:</span>
                     <span style={{marginLeft:"1%",fontSize:"100%",wordBreak:"break-all"}}>
-                      vishunayak2001@gmail.com
+                      {data.email}
                     </span>
                     </span>
                   
-                  <span>
+                  <div>
                     <span style={{fontSize:"120%",fontWeight:"bold"}}>Visit:</span>
-                    <span style={{marginLeft:"1%",wordBreak:"break-all",fontSize:"100%"}}>
-                    http://localhost:3000/mycompanydashboard
-                    </span>
-                    </span>
+                    <a href={data.website} target ='_blank'><span style={{marginLeft:"1%",wordBreak:"break-all",fontSize:"100%",color:"blueviolet",fontWeight:"normal"}}>
+                    {data.website}
+                    </span></a>
+                    </div>
                     </div>
                     </div>
             </Col>
