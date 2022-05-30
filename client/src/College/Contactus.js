@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Container,Row,Col,Form,Button,FloatingLabel} from 'react-bootstrap'
-import CompanyProfile from './CompanyProfile'
+import CollegeProfile from './CollegeProfile'
 import '../Components/CompanyProfile.css'
 import pic1 from '../Images/multi_user.jpg'
 import pic from '../Images/user.jpeg'
 import emailjs from "emailjs-com"
 import { useNavigate } from 'react-router-dom'
 
-function ContactUs() {
+function Contactus() {
   const [msg,setMsg]=useState("");
   const nav = useNavigate();
   const handleSubmit = (event) => {
@@ -21,7 +21,7 @@ function ContactUs() {
     <React.Fragment>
     <Container fluid>
           <Row>
-          <CompanyProfile val = '6'/>
+          <CollegeProfile val = '7'/>
           <Col xl="10" lg="10" md = "9" sm ="12" xs="12" style={{marginTop:"1%",marginBottom:"10%"}}>
           <Row  style={{display:"flex",justifyContent:"end"}}>
           <Col sm = {12} xs={12} md={6} lg={6}>
@@ -102,7 +102,7 @@ function ContactUs() {
             </Row>
         </Container>
         </React.Fragment>
-      )
+  )
 }
 
-export default ContactUs
+export default Contactus

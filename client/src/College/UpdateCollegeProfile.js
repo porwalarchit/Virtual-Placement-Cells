@@ -37,7 +37,7 @@ function UpdateCollegeProfile() {
         console.log(resp);
         setMsg("Successfully Registered");
         setStyle("success");
-        setTimeout(()=>{navigate("/mycollegedashboard")},2000);
+        setTimeout(()=>{navigate("/mycollegedashboard")},500);
       }
     ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})
   }

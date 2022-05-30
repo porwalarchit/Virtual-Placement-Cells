@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import pic from '../Images/Ellipse 3.png'
 import '../Components/CompanyProfile.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -55,6 +55,7 @@ useEffect(
   },[]
 )
 //jack ended component started
+const navigate = useNavigate();
   return (
     <React.Fragment>
             <Col xl="2" lg="2" md = "3" sm ="12" xs="12" style={{color:"white",backgroundColor:"black",paddingTop:"2%"}}>
@@ -89,24 +90,27 @@ useEffect(
                       View Jobs</Button>
                     </div>
                     </Link>
-                <Link id = '5' to = "/Applications" >
+                <Link id = '5' to = "/ViewApplication" >
                   <div>
                     <Button className={col5}>
                     <FontAwesomeIcon icon={faMessage} className="icon"/>
                       View Applications</Button>
                     </div>
                     </Link>
-                  <Link id = '7' to = "/comcon" >
-                <div><Button className={col7}>
+                  <Link id = '6' to = "/ViewPlacements" >
+                <div><Button className={col6}>
                 <FontAwesomeIcon icon={faSackDollar} className="icon"/>
                   View Placements</Button></div>
                   </Link>
-                  <Link id = '6' to = "/comcon" >
-                <div><Button className={col6}>
+                  <Link id = '7' to = "/contact" >
+                <div><Button className={col7}>
                 <FontAwesomeIcon icon={faCommenting} className="icon"/>
                   Contact Us</Button></div>
                   </Link>
-                <div><Button id = "but7" className='but2'>
+                <div><Button onClick={()=>{
+                  localStorage.removeItem('jwtToken');
+                  navigate('/');
+                }} id = "but7" className='but2'>
                 <FontAwesomeIcon icon={faRightFromBracket} className="icon"/>
                   Logout</Button></div>
             </div>

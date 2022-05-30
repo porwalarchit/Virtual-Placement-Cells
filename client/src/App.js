@@ -19,6 +19,7 @@ import UpdatePlacement from './College/UpdatePlacement';
 import ViewJobs from './College/ViewJobs';
 import ViewApplication from './College/ViewApplication';
 import ViewPlacements from './College/ViewPlacements';
+import Contactus from './College/Contactus';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
       <Route exact path='/setcompany' element = {<SetCompanyProfile/>}/>
       <Route exact path='/mycollegedashboard' element = {<MyCollegeDashboard/>}/>
       <Route exact path='/comcon' element = {<ContactUs/>}/>
+      <Route exact path='/contact' element = {<Contactus/>}/>
       <Route exact path='/updatecollege' element = {<UpdateCollegeProfile/>}/>
       <Route exact path='/updateplacement' element = {<UpdatePlacement/>}/>
       <Route exact path='/ViewJobs' element = {<ViewJobs/>}/>

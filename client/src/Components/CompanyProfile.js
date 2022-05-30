@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import pic from '../Images/Ellipse 3.png'
 import './CompanyProfile.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,6 +8,7 @@ import { faCommenting, faGraduationCap,faIdCard,faMessage,faPaperPlane,faRightFr
 
 function CompanyProfile({val}) {
   //jack
+  const navigate = useNavigate();
   const[col1,setCol1] = useState('but2');
   const[col2,setCol2] = useState('but2');
   const[col3,setCol3] = useState('but2');
@@ -95,7 +96,10 @@ useEffect(
                 <FontAwesomeIcon icon={faCommenting} className="icon"/>
                   Contact Us</Button></div>
                   </Link>
-                <div><Button id = "but7" className='but2'>
+                <div><Button onClick={()=>{
+                  localStorage.removeItem('jwtToken');
+                  navigate('/');
+                }} id = "but7" className='but2'>
                 <FontAwesomeIcon icon={faRightFromBracket} className="icon"/>
                   Logout</Button></div>
             </div>

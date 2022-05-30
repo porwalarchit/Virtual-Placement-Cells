@@ -5,6 +5,8 @@ import '../Components/CompanyProfile.css'
 import Job from './Job'
 
 function ViewJobs() {
+
+  
   return (
     <React.Fragment>
     <Container fluid>
