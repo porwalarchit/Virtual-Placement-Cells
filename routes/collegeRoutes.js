@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const authenticateToken = require("../middlewares/authenticateToken");
-const {validateSignupRequest, validateSigninRequest, isRequestValidated} = require("../middlewares/validator");
+const {validateCollegeSignupRequest, validateSigninRequest, isRequestValidated} = require("../middlewares/validator");
 
 const collegeSignup = require("../controllers/collegeSignup");
 const collegeLogin = require("../controllers/collegeLogin");
@@ -18,7 +18,7 @@ const searchCompany = require("../controllers/searchCompany");
 const { applyforCompany, appliedJobs } = require("../controllers/applyforCompany");
 
 
-router.post('/register', validateSignupRequest, isRequestValidated, collegeSignup);
+router.post('/register', validateCollegeSignupRequest, isRequestValidated, collegeSignup);
 
 router.post('/login', validateSigninRequest, isRequestValidated, collegeLogin);
 

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const authenticateToken = require("../middlewares/authenticateToken");
-const {validateSignupRequest, validateSigninRequest, isRequestValidated} = require("../middlewares/validator");
+const {validateCompanySignupRequest, validateSigninRequest, isRequestValidated } = require("../middlewares/validator");
 
 const companySignup = require("../controllers/companySignup");
 const companyLogin = require("../controllers/companyLogin");
@@ -16,8 +16,7 @@ const getAllCollegePlacements = require("../controllers/getAllCollegePlacements"
 const deleteJob = require("../controllers/deleteJob");
 const searchCollege = require("../controllers/searchCollege");
 
-
-router.post('/signup', validateSignupRequest, isRequestValidated, companySignup);
+router.post('/signup', validateCompanySignupRequest, isRequestValidated, companySignup);
 
 router.post('/login', validateSigninRequest, isRequestValidated, companyLogin)
 
@@ -36,5 +35,23 @@ router.get('/getAllCollege/placements/:id', authenticateToken, getAllCollegePlac
 router.get('/searchCollege', authenticateToken, searchCollege);
 
 // Accept or Reject College Application API
+const appliedCollege = require("../models/appliedCollege");
+const Company = require("../models/companyModel");
+router.get('/viewAppliedCollege', authenticateToken, (req, res) => {
+    
+    appliedCollege.find().exec((err, user) => {
+        if (err) {
+            return res.status(401).json(err);
+        }
+        else if (JSON.stringify(user) == "[]") {
+            return res.status(301).json({
+                message: "No College Applied"
+            })
+        }
+        return res.status(201).json({
+            user
+        })
+    })
+})
 
 module.exports = router;

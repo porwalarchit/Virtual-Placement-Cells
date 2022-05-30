@@ -26,7 +26,7 @@ const updateCollegeProfile = async (req, res) => {
 
         const { hashPassword, ...others } = updateUser._doc;
         return res.status(202).json({
-            message: "College Update Profile",
+            message: "Profile Updated Successfully",
             others
         })
     } catch (error) {

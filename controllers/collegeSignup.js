@@ -1,9 +1,10 @@
 const bcrypt = require("bcrypt");
 const College = require("../models/collegeModel");
+const jwt = require("jsonwebtoken");
 
 const collegeSignup = async (req, res) => {
     try {
-        College.findOne({ collegeName: req.body.collegeName }).exec(async(error, user) => {
+        College.findOne({ collegeName: req.body.collegeName }).exec(async (error, user) => {
             if (user) {
                 return res.status(301).json({
                     message: "College Already Exist, Try Signin"
@@ -26,8 +27,14 @@ const collegeSignup = async (req, res) => {
                 newUser.hashPassword = await bcrypt.hash(password, 10);
 
                 await newUser.save();
+                const userPayload = { id: newUser._id };
+                const accessToken = jwt.sign(userPayload, process.env.JWT_SECRET, {
+                    expiresIn: '12h'
+                });
+
                 return res.status(200).json({
-                    message: "College Registered"
+                    message: "College Registered",
+                    accessToken
                 });
             }
             else {

@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const Company = require("../models/companyModel");
+const jwt = require("jsonwebtoken");
 
 const companySignup = async (req, res) => {
     try {
@@ -24,8 +25,15 @@ const companySignup = async (req, res) => {
                 newUser.hashPassword = await bcrypt.hash(password, 10);
 
                 await newUser.save();
+                
+                const userPayload = { id: newUser._id };
+                const accessToken = jwt.sign(userPayload, process.env.JWT_SECRET, {
+                    expiresIn: '12h'
+                });
+
                 return res.status(201).json({
                     message: "Company Registered",
+                    accessToken
                 })
             }
             else {
