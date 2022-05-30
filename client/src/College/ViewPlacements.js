@@ -1,10 +1,26 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { Container,Row,Col,Form,Button} from 'react-bootstrap'
 import CollegeProfile from './CollegeProfile'
 import '../Components/CompanyProfile.css'
+import axios from 'axios'
 import Placement from './Placement'
 
 function ViewPlacements() {
+  const [data,setData] = useState([]);
+  const config = {
+    headers:{
+      authorization:localStorage.getItem('jwtToken'),
+    }
+  }
+  useEffect(()=>{
+    axios.get("http://localhost:5000/college/viewPlacement",config).then((resp)=>{
+      console.log(resp);
+    setData(resp.data);
+      }).catch((err)=>{
+  console.error(err);
+      })
+  },[]);
+  
   return (
     <React.Fragment>
     <Container fluid>
@@ -24,13 +40,11 @@ function ViewPlacements() {
                   </Col>
                 </Row>
                 <Row>
-                 <Placement/>
-                 <Placement/>
-                 <Placement/>
-                 <Placement/>
-                 <Placement/>
-                 <Placement/>
-                 
+                 {
+                   data.map((d)=>(
+                      <Placement key = {data._id} dt = {d}></Placement>
+                   ))
+                  }
                 </Row>
             </Col>
             </Row>
