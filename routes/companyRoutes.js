@@ -11,6 +11,7 @@ const upload = require("../utils/multer");
 const updateCompanyProfile = require("../controllers/updateCompanyProfile");
 
 const addJob = require("../controllers/addJob");
+const getAllJobs = require("../controllers/getAllJobs");
 const getAllCollege = require("../controllers/getAllCollege");
 const getAllCollegePlacements = require("../controllers/getAllCollegePlacements");
 const deleteJob = require("../controllers/deleteJob");
@@ -26,6 +27,8 @@ router.patch('/update/profile', authenticateToken, upload.single("profileImg"), 
 
 router.post('/addJob', authenticateToken, addJob);
 
+router.get('/viewJob', authenticateToken, getAllJobs);
+
 router.delete('/deleteJob/:id', authenticateToken, deleteJob)
 
 router.get('/getAllCollege', authenticateToken, getAllCollege);
@@ -37,6 +40,7 @@ router.get('/searchCollege', authenticateToken, searchCollege);
 // Accept or Reject College Application API
 const appliedCollege = require("../models/appliedCollege");
 const Company = require("../models/companyModel");
+// const getAllJobs = require("../controllers/getAllJobs");
 router.get('/viewAppliedCollege', authenticateToken, (req, res) => {
     
     appliedCollege.find().exec((err, user) => {

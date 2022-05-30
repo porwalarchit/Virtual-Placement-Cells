@@ -1,4 +1,3 @@
-const Company = require("../models/companyModel");
 const Job = require("../models/jobModel");
 
 const getAllCompanyJobs = (req, res) => {
