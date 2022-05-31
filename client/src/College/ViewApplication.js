@@ -1,10 +1,40 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import { Container,Row,Col,Form,Button} from 'react-bootstrap'
 import CollegeProfile from './CollegeProfile'
 import '../Components/CompanyProfile.css'
+import axios from 'axios'
+import Applicationclg from './Applicationclg'
 
 
 function ViewApplication() {
+  const [data1,setData1] = useState([]);
+  const [data,setData] = useState([]);
+const [msg,setMsg] = useState("");
+const [updated,setUpdated] = useState(false) ;  
+const config = {
+  headers:{
+    authorization:localStorage.getItem('jwtToken'),
+  }
+}
+
+function getApplied(){
+  console.log(config)
+  axios.get("http://localhost:5000/college/appliedJobs",config).then((resp)=>{
+    console.log(resp)
+  setData(resp.data.clg);
+  setData1(resp.data.user);
+    }).catch((err)=>{
+      setMsg(err.response.data.message);
+      console.error(err)
+    })
+}
+
+useEffect(()=>{
+  getApplied() 
+},[updated]);
+
+
+
   return (
     <React.Fragment>
     <Container fluid>
@@ -24,7 +54,16 @@ function ViewApplication() {
                   </Col>
                 </Row>
                 <Row>
-                 
+                  { 
+                   data.map((d)=>(
+                      <Applicationclg setUpdated={setUpdated} key = {d._id} dt = {d}></Applicationclg>
+                   ))
+                  }
+                  { 
+                   data1.map((d)=>(
+                      <Applicationclg setUpdated={setUpdated} key = {d._id} dt = {d}></Applicationclg>
+                   ))
+                  }
                 </Row>
             </Col>
             </Row>

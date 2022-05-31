@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import { Container,Row,Col,Form,Button, FloatingLabel } from 'react-bootstrap'
 import pic from '../Images/Ellipse 3.png'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 
 
 function Application({dt,setUpdated}) {
@@ -40,9 +40,6 @@ const handleRejected = ()=>{
     })
 };
 
-
-
-
   return (
     <Row style={{backgroundColor:" rgba(217, 217, 217, 0.7)",margin:"2%",padding:"2%",borderRadius:"20px"}}>
         <Col lg={1} sm= {12} md = {1} xs={12} xl={1}>
@@ -54,7 +51,8 @@ const handleRejected = ()=>{
         <Row style={{fontSize:"80%",alignItems:"center",fontWeight:"bold",color:"red"}}>Status: {dt.status}</Row>
         </Col>
         <Col lg={2} sm= {5} md = {2} xs={5} xl={2} style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
-        <div><Button className="px-3 py-1" style={{fontSize:"100%",backgroundColor:"rgba(9,8,20,22)",borderRadius:"15px"}}>View College</Button></div>
+        <Link to={`/clgfromcmpny/${dt.collegeId}`}><div>
+        <Button className="px-3 py-1" style={{fontSize:"100%",backgroundColor:"rgba(9,8,20,22)",borderRadius:"15px"}}>View College</Button></div></Link>
         </Col>
         <Col style={{display:"flex",alignItems:"center",justifyContent:"end"}}>
         <div style={{marginRight:"2%"}}><Button onClick={handleAccepted} className="px-3 py-1" style={{fontSize:"100%",backgroundColor:"green",borderRadius:"15px"}}>Accept</Button></div>

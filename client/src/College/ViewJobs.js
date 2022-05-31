@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import { Container,Row,Col,Form,Button} from 'react-bootstrap'
 import CollegeProfile from './CollegeProfile'
 import '../Components/CompanyProfile.css'
 import Job from './Job'
+import axios from 'axios'
 
 function ViewJobs() {
-
+  const [data,setData] = useState([]);
+  const [msg,setMsg] = useState("");
+  const config = {
+    headers:{
+      authorization:localStorage.getItem('jwtToken'),
+    }
+  }
+  useEffect(()=>{
+    axios.get("http://localhost:5000/college/getAllCompanyJobs",config).then((resp)=>{
+      console.log(resp)
+      setData(resp.data);
+      }).catch((err)=>{
+        setMsg(err.response.data.message);
+        console.error(err)
+      })
+  },[]);
+  
   
   return (
     <React.Fragment>
@@ -25,9 +42,13 @@ function ViewJobs() {
                     View Jobs
                   </Col>
                 </Row>
-                  <Job/>
-                  <Job/>
-                  <Job/>
+                <h1 style={{color:"red",fontSize:"150%",textAlign:"center"}}>{msg}</h1>
+
+{ 
+ data.map((d)=>(
+    <Job key = {d._id} dt = {d}></Job>
+ ))
+}
             </Col>
             </Row>
         </Container>

@@ -48,7 +48,7 @@ function App() {
       <Route exact path='/ViewApplication' element = {<ViewApplication/>}/>
       <Route exact path='/ViewPlacements' element = {<ViewPlacements/>}/>
       <Route exact path='/companyjobs' element = {<CompanyJobs/>}/>
-      <Route exact path='/clgfromcmpny' element = {<Collegefromcomp/>}/>
+      <Route exact path='/clgfromcmpny/:id' element = {<Collegefromcomp/>}/>
     </Routes>
     </BrowserRouter>
   )

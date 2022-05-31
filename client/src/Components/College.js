@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Row,Button } from 'react-bootstrap'
+import { Link,useNavigate } from 'react-router-dom'
 
 function College({dt}) {
   return (
@@ -16,7 +17,8 @@ function College({dt}) {
         </Row>
         </Col>
         <Col style={{display:"flex",alignItems:"center",justifyContent:"end"}}>
-        <div><Button className="px-5 py-2" style={{fontSize:"120%",backgroundColor:"cadetblue",borderRadius:"15px"}}>View</Button></div>
+        <Link to={`/clgfromcmpny/${dt._id}`}><div></div><div><Button className="px-5 py-2" style={{fontSize:"120%",backgroundColor:"cadetblue",borderRadius:"15px"}}>View</Button></div>
+        </Link>
         </Col>
     </Row>
   )
