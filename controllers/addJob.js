@@ -8,6 +8,7 @@ const addJob = async(req, res)=>{
             const newJob = new Job({
                 companyId: req.user.id,
                 companyName: company.companyName,
+                companyImg: company.profileImg,
                 jobName: req.body.jobName,
                 jobDescription: req.body.jobDescription,
                 jobRequirements: req.body.jobRequirements,

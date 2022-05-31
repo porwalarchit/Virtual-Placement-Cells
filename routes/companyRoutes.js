@@ -45,7 +45,7 @@ router.delete('/deleteJob/:id', authenticateToken, deleteJob);
 router.get('/getAllCollege', authenticateToken, getAllCollege);
 
 // Get College Details by ID
-router.get('/getAllCollege/:id', authenticateToken, getAllCollegePlacements);
+router.get('/getAllCollege/placements/:id', authenticateToken, getAllCollegePlacements);
 
 // Search College
 router.get('/searchCollege', authenticateToken, searchCollege);

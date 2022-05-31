@@ -9,6 +9,9 @@ const jobSchema = new mongoose.Schema({
         type: String,
         require: [true, "Please Enter Company Name"]
     },
+    companyImg:{
+        type: String,
+    },
     jobName:{
         type:String,
         required:[true, "Please enter Job Name"],
