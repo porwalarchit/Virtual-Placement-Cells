@@ -20,6 +20,8 @@ import ViewJobs from './College/ViewJobs';
 import ViewApplication from './College/ViewApplication';
 import ViewPlacements from './College/ViewPlacements';
 import Contactus from './College/Contactus';
+import CompanyJobs from './Components/CompanyJobs'
+import Collegefromcomp from './Components/Collegefromcomp';
 
 function App() {
   return (
@@ -45,6 +47,8 @@ function App() {
       <Route exact path='/ViewJobs' element = {<ViewJobs/>}/>
       <Route exact path='/ViewApplication' element = {<ViewApplication/>}/>
       <Route exact path='/ViewPlacements' element = {<ViewPlacements/>}/>
+      <Route exact path='/companyjobs' element = {<CompanyJobs/>}/>
+      <Route exact path='/clgfromcmpny' element = {<Collegefromcomp/>}/>
     </Routes>
     </BrowserRouter>
   )

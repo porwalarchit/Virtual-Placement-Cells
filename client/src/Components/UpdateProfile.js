@@ -37,7 +37,7 @@ function UpdateProfile() {
         console.log(resp);
         setMsg("Successfully Registered");
         setStyle("success");
-        setTimeout(()=>{navigate("/mycompanydashboard")},2000);
+        setTimeout(()=>{navigate("/mycompanydashboard")},500);
       }
     ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})
   }

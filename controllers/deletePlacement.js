@@ -8,6 +8,7 @@ const deletePlacement = async (req, res) => {
                 return res.status(401).json(err);
             }
             else if(user==null){
+                console.log("delete")
                 return res.status(302).json({
                     message: "No College Found"
                 })

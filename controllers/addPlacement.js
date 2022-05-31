@@ -28,6 +28,7 @@ const addPlacement = async (req, res) => {
             })
         }
         else {
+            console.log("add Placement")
             return res.status(301).json({
                 message: "No College Found"
             })

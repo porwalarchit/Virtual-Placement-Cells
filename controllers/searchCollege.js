@@ -7,6 +7,7 @@ const searchCollege = (req, res) => {
                 return res.status(401).json(err);
             }
             else if (JSON.stringify(result) == "[]") {
+                console.log("search college")
                 return res.status(301).json({
                     message: "No College Found",
                 })

@@ -1,10 +1,36 @@
-import React from 'react'
-import { Container,Row,Col,Form,Button, FloatingLabel } from 'react-bootstrap'
+import React, { useState,useEffect } from 'react'
+import { Container,Row,Col,Form,Button } from 'react-bootstrap'
 import CompanyProfile from './CompanyProfile'
 import './CompanyProfile.css'
 import Application from './Application'
+import axios from 'axios'
 
 function Applications() {
+  const [data,setData] = useState([]);
+const [msg,setMsg] = useState("");
+const [updated,setUpdated] = useState(false) ; 
+const config = {
+  headers:{
+    authorization:localStorage.getItem('jwtToken'),
+  }
+}
+
+function getApplied(){
+  console.log(config)
+  axios.get("http://localhost:5000/company/viewAppliedCollege",config).then((resp)=>{
+    console.log(resp)
+    setData(resp.data.user);
+    }).catch((err)=>{
+      // setMsg(err.response.data.message);
+      console.error(err)
+    })
+}
+
+useEffect(()=>{
+  getApplied() 
+},[updated]);
+
+
   return (
     <React.Fragment>
     <Container fluid>
@@ -23,9 +49,15 @@ function Applications() {
               Current Applications
             </Col>
           </Row>
-            <Application/>
-            <Application/>
-            <Application/>
+          <h1 style={{color:"red",fontSize:"150%",textAlign:"center"}}>{msg}</h1>
+
+                  { 
+                   data.filter(function (dt) {
+                    return dt.status === "Pending";
+                }).map((d)=>(
+                      <Application setUpdated={setUpdated} key = {d._id} dt = {d}></Application>
+                   ))
+                  }
       </Col>
       </Row>
   </Container>

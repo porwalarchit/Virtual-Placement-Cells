@@ -15,6 +15,7 @@ function CompanyProfile({val}) {
   const[col4,setCol4] = useState('but2');
   const[col5,setCol5] = useState('but2');
   const[col6,setCol6] = useState('but2');
+  const[col7,setCol7] = useState('but2');
 const handleClick1 = ()=>{
 setCol1('but1');
 }
@@ -33,6 +34,9 @@ const handleClick5 = ()=>{
 const handleClick6 = ()=>{
   setCol6('but1');
 }
+const handleClick7 = ()=>{
+  setCol7('but1');
+}
 useEffect(
   ()=>{
     if(val === '1')
@@ -47,6 +51,8 @@ useEffect(
     handleClick5();
     else if(val === '6')
     handleClick6();
+    else if(val === '7')
+    handleClick7();
   },[]
 )
 //jack ended component started
@@ -91,8 +97,13 @@ useEffect(
                       View Applications</Button>
                     </div>
                     </Link>
-                  <Link id = '6' to = "/comcon" >
+                  <Link id = '6' to = "/companyjobs" >
                 <div><Button id = "but6" className={col6}>
+                <FontAwesomeIcon icon={faGraduationCap} className="icon"/>
+                  View Jobs</Button></div>
+                  </Link>
+                  <Link id = '7' to = "/comcon" >
+                <div><Button id = "but7" className={col7}>
                 <FontAwesomeIcon icon={faCommenting} className="icon"/>
                   Contact Us</Button></div>
                   </Link>
