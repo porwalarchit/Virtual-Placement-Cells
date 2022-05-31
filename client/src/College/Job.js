@@ -10,7 +10,7 @@ function Job() {
         </Col>
         <Col lg={7} sm= {7} md = {7} xs={7} xl={7}>
         <Row style={{fontSize:"150%",fontWeight:"bold"}}>
-            Gaypee COmpany
+            Jaypee Company
         </Row>
         <Row style={{fontSize:"110%",fontWeight:"bold"}}>
             Role

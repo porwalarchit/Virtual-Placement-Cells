@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const authenticateToken = require("../middlewares/authenticateToken");
-const {validateCompanySignupRequest, validateSigninRequest, isRequestValidated } = require("../middlewares/validator");
+const { validateCompanySignupRequest, validateSigninRequest, isRequestValidated } = require("../middlewares/validator");
 
 const companySignup = require("../controllers/companySignup");
 const companyLogin = require("../controllers/companyLogin");
@@ -16,6 +16,9 @@ const getAllCollege = require("../controllers/getAllCollege");
 const getAllCollegePlacements = require("../controllers/getAllCollegePlacements");
 const deleteJob = require("../controllers/deleteJob");
 const searchCollege = require("../controllers/searchCollege");
+
+const viewApplication = require("../controllers/viewApplication");
+const acceptRejectApplication = require("../controllers/acceptRejectApplication");
 
 router.post('/signup', validateCompanySignupRequest, isRequestValidated, companySignup);
 
@@ -37,25 +40,10 @@ router.get('/getAllCollege/placements/:id', authenticateToken, getAllCollegePlac
 
 router.get('/searchCollege', authenticateToken, searchCollege);
 
-// Accept or Reject College Application API
-const appliedCollege = require("../models/appliedCollege");
-const Company = require("../models/companyModel");
-// const getAllJobs = require("../controllers/getAllJobs");
-router.get('/viewAppliedCollege', authenticateToken, (req, res) => {
-    
-    appliedCollege.find().exec((err, user) => {
-        if (err) {
-            return res.status(401).json(err);
-        }
-        else if (JSON.stringify(user) == "[]") {
-            return res.status(301).json({
-                message: "No College Applied"
-            })
-        }
-        return res.status(201).json({
-            user
-        })
-    })
-})
+// View All College Application API
+router.get('/viewAppliedCollege', authenticateToken, viewApplication)
+
+// Accept or Reject Application submitted by Colleges
+router.post('/viewAppliedCollege/:id', authenticateToken, acceptRejectApplication)
 
 module.exports = router;

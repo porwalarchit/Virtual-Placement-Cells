@@ -36,19 +36,5 @@ const applyforCompany = async (req, res) => {
     }
 }
 
-const appliedJobs = (req, res) => {
-    appliedCollege.find().exec((err, user) => {
-        if (err) {
-            return res.status(401).json(err);
-        }
-        else if(JSON.stringify(user)=="[]"){
-            return res.status(301).json({
-                message:"No Jobs Applied"
-            })
-        }
-        return res.status(201).json({
-            user
-        })
-    })
-}
-module.exports = {applyforCompany, appliedJobs}
+
+module.exports = applyforCompany

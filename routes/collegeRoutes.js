@@ -16,8 +16,8 @@ const deletePlacement = require("../controllers/deletePlacement");
 const getAllCompany = require("../controllers/getAllCompany");
 const getAllCompanyJobs = require("../controllers/getAllCompanyJobs");
 const searchCompany = require("../controllers/searchCompany");
-const { applyforCompany, appliedJobs } = require("../controllers/applyforCompany");
-
+const applyforCompany = require("../controllers/applyforCompany");
+const appliedJobs = require("../controllers/viewAppliedJobs");
 
 router.post('/register', validateCollegeSignupRequest, isRequestValidated, collegeSignup);
 
