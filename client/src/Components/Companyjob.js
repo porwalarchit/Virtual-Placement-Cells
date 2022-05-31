@@ -5,9 +5,9 @@ import pic from '../Images/Ellipse 3.png'
 function Companyjob({dt}) {
     const arr = dt.jobPerks;
   return (
-    <Row style={{backgroundColor:"rgba(217, 217, 217, 0.5)",margin:"2% 1%",borderRadius:"15px",padding:"1%"}}>
+    <Row style={{backgroundColor:"rgba(217, 217, 217, 0.5)",margin:"2% 1%",borderRadius:"15px",padding:"1%",border:"double cadetblue"}}>
     <Col lg={2} sm= {12} md = {2} xs={12} xl={2} >
-        <img src={dt.collegeImg} style={{width:"80px"}}/>
+        <img src={dt.companyImg} style={{width:"80px"}}/>
         </Col>
         <Col lg={7} sm= {7} md = {7} xs={7} xl={7}>
         <Row style={{fontSize:"150%",fontWeight:"bold"}}>

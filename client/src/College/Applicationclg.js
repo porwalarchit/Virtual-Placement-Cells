@@ -5,12 +5,12 @@ import pic from '../Images/Ellipse 3.png'
 function Applicationclg({dt}) {
     
     return (
-        <Row style={{backgroundColor:" rgba(217, 217, 217, 0.7)",margin:"2%",padding:"2%",borderRadius:"20px",width:"95%"}}>
+        <Row style={{backgroundColor:" rgba(217, 217, 217, 0.7)",margin:"2%",padding:"2%",borderRadius:"20px",width:"95%",border:"double cadetblue"}}>
             <Col lg={2} sm= {12} md = {2} xs={12} xl={2}>
             <img src={pic} style={{width:"50px"}}/>
             </Col>
             <Col lg={6} sm= {12} md = {6} xs={12} xl={6}  style={{alignItems:"center",textAlign:"center"}}>
-            <Row style={{fontSize:"130%",alignItems:"center",fontWeight:"bold"}}>{dt.companyName}</Row>
+            <Row style={{fontSize:"190%",alignItems:"center",fontWeight:"bold"}}>{dt.companyName}</Row>
             <Row style={{fontSize:"110%",alignItems:"center"}}>{dt.jobName}</Row>
             </Col>
             {

@@ -1,10 +1,49 @@
-import React from 'react'
-import { Container,Row,Form,Button, FloatingLabel } from 'react-bootstrap'
+import React,{useState} from 'react'
+import { Alert,Col, Row,Form,Button, Container,FloatingLabel} from 'react-bootstrap'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import './CompanyProfile.css'
-import { Link } from 'react-router-dom'
 
 
 function SetCompanyProfile() {
+  const [desc,setDesc] = useState("");
+  const [file,setFile] = useState([]);
+  const [web,setWeb] = useState("");
+  const [msg,setMsg] = useState("");
+  const [style,setStyle] = useState("danger");
+  const navigate = useNavigate();
+  const handleClick = (e)=>{
+    e.preventDefault() ;
+    console.log(localStorage.getItem('jwtToken'));
+    if(desc ==="" || file ==="" || web ==="" )
+    {
+      setMsg("ALL FIELDS REQUIRED");
+      return;
+    }
+    let fd = new FormData() ; 
+    fd.append("profileImg",file[0]) ; 
+    fd.append("description",desc) ; 
+    fd.append("website",web)
+    const data = {
+      headers:{
+        authorization: localStorage.getItem("jwtToken"),
+        'Content-Type': 'multipart/form-data'
+      }
+    }
+    console.log(fd.values())
+    axios.patch("http://localhost:5000/company/update/profile",fd,data).then(
+      (resp)=>{
+        console.log(resp);
+        setMsg("Successfully Registered");
+        setStyle("success");
+        setTimeout(()=>{navigate("/mycompanydashboard")},500);
+      }
+    ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})
+  }
+
+
+
+
   return (
     <Container fluid>
         <Row style={{backgroundColor:"black",padding:"20px"}}>
@@ -17,24 +56,23 @@ function SetCompanyProfile() {
         KINDLY SET UP YOUR PROFILE
     </div>
     <Form>
-                 <FloatingLabel label="Company Name" className="mb-3">
-                   <Form.Control required type="text" style={{height:"50px"}} placeholder="Company Name" />
-                   </FloatingLabel>
-                   <FloatingLabel label="Email address" className="mb-3">
-                   <Form.Control required type="email" style={{height:"50px"}} placeholder="name@example.com" />
-                   </FloatingLabel>
+
                    <FloatingLabel label="Description" className="mb-3">
-                   <Form.Control required as="textarea" style={{height:"130px"}} maxLength="1000" placeholder="description about company"/>
+                   <Form.Control  onChange = {(e)=>{setDesc(e.target.value);}} required as="textarea" style={{height:"130px"}} maxLength="1000" placeholder="description about company"/>
                    </FloatingLabel>
                  <FloatingLabel label="Website" className="mb-3">
-                   <Form.Control required type="text" placeholder="website" />
+                   <Form.Control  onChange = {(e)=>{setWeb(e.target.value);}}required type="text" placeholder="website" />
                    </FloatingLabel>
                    <Form.Group className="mb-3" >
     <Form.Label style={{fontWeight:"bolder"}}>New Image</Form.Label>
-    <Form.Control type="file" placeholder="Image" />
+    <Form.Control onChange = {(e)=>{setFile(e.target.files);console.log(file.path)}} type="file" placeholder="Image" />
     </Form.Group>
+    {msg&&
+            <Alert variant={style} onClose={() => setMsg("")} dismissible>
+        {msg}
+      </Alert>}
     <div  style={{display:"flex",justifyContent:"center"}}>
-   <Link to="/mycompanydashboard"><Button type='submit' className='but1 px-4 py-1'>SUBMIT</Button></Link> 
+  <Button onClick={handleClick} className='but1 px-4 py-1'>SUBMIT</Button>
     </div>
     </Form>
     </Container>

@@ -1,9 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Row,Col, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import pic from '../Images/Ellipse 3.png'
 
 function Job({dt}) {
+    const [msg,setMsg] = useState('')
+  const navigate = useNavigate();
+  const handleClick = (e)=>{
+    e.preventDefault() ;
+    const data = {
+      headers:{
+        authorization: localStorage.getItem("jwtToken"),
+      }
+    }
+    const config = {
+         jobid:dt._id,
+        }
+    console.log(dt);
+    axios.post(`http://localhost:5000/college/applyforCompany/${dt._id}`,config,data).then(
+      (resp)=>{
+        setMsg("");
+        setTimeout(()=>{navigate("/ViewApplication")},500);
+      }
+    ).catch((err)=>{setMsg("Already Applied");
+        console.error(err);})
+  }
+
+
     const arr = dt.jobPerks;
+
     return (
       <Row style={{backgroundColor:"rgba(217, 217, 217, 0.5)",margin:"2% 1%",borderRadius:"15px",padding:"1%"}}>
       <Col lg={2} sm= {12} md = {2} xs={12} xl={2} >
@@ -28,7 +54,10 @@ function Job({dt}) {
               {dt.duration}
           </Row>
           <Row>
-             <Button  style={{width:"80%"}}>Apply</Button>
+             <Button onClick={handleClick} style={{width:"80%"}}>Apply</Button>
+          </Row>
+          <Row>
+             <div style={{color:"red",fontWeight:"bold"}}>{msg}</div>
           </Row>
           <Row style={{fontSize:"130%"}}>
               {arr.map(d=>{
