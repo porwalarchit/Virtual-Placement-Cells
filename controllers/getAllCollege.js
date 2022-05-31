@@ -4,7 +4,6 @@ const getAllCollege = async (req, res) => {
     try {
         College.find().exec((err, result) => {
             if (err) {
-                console.log("get all college")
                 return res.status(301).json({
                     message: "No College Found",
                     err,

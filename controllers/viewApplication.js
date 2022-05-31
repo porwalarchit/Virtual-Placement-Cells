@@ -7,11 +7,11 @@ const viewApplication = (req, res) => {
             if (err) {
                 return res.status(401).json(err);
             }
-            // else if (JSON.stringify(user) == "[]") {
-            //     return res.status(301).json({
-            //         message: "No College Applied"
-            //     })
-            // }
+            else if (JSON.stringify(user) == "[]") {
+                return res.status(301).json({
+                    message: "No College Applied"
+                })
+            }
             return res.status(201).json({
                 user
             })

@@ -19,7 +19,6 @@ const updateCollegeProfile = async (req, res) => {
         });
 
         if (!updateUser) {
-            console.log("updage college profile")
             return res.status(301).json({
                 message: "No College Found"
             });
