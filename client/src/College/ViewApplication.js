@@ -4,6 +4,7 @@ import CollegeProfile from './CollegeProfile'
 import '../Components/CompanyProfile.css'
 import axios from 'axios'
 import Applicationclg from './Applicationclg'
+import { useNavigate } from 'react-router-dom'
 
 
 function ViewApplication() {
@@ -11,6 +12,7 @@ function ViewApplication() {
   const [data,setData] = useState([]);
 const [msg,setMsg] = useState("");
 const [updated,setUpdated] = useState(false) ;  
+const nav = useNavigate();
 const config = {
   headers:{
     authorization:localStorage.getItem('jwtToken'),
@@ -32,6 +34,9 @@ function getApplied(){
 useEffect(()=>{
   getApplied() 
 },[updated]);
+const gosearch = ()=>{
+  nav('/clgsearch');
+}
 
 
 
@@ -44,8 +49,8 @@ useEffect(()=>{
           <Row  style={{display:"flex",justifyContent:"end"}}>
           <Col sm = {12} xs={12} md={6} lg={6}>
             <Form style={{display:"flex"}}>
-          <input placeholder="Search College" className='inp'/>
-          <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
+          <input placeholder="Search Company" className='inp'/>
+          <Button onClick={gosearch} style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
           </Form></Col>
           </Row>
                 <Row>

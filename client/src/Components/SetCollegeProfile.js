@@ -24,7 +24,7 @@ function SetCollegeProfile() {
     fd.append("website",web)
     const data = {
       headers:{
-        authorization: localStorage.getItem("jwtToken"),
+        authorization: localStorage.getItem("accessToken"),
         'Content-Type': 'multipart/form-data'
       }
     }
@@ -34,7 +34,8 @@ function SetCollegeProfile() {
         if(resp.status === 202){
         setMsg("Successfully Updated");
         setStyle("success");
-        setTimeout(()=>{navigate("/mycollegedashboard")},2000);}
+        localStorage.removeItem('accessToken');
+        setTimeout(()=>{navigate("/institutelogin")},2000);}
       }
     ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})
   }

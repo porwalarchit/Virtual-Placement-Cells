@@ -18,7 +18,7 @@ function UpdatePlacement() {
   const handleClick = (e)=>{
     e.preventDefault() ;
     console.log(localStorage.getItem('jwtToken'));
-    if(stnm ==="" || file ==="" || cmp ==="" || prf ==="" || pkg ==="")
+    if(stnm ==="" || file ==="" || cmp ==="" )
     {
       setMsg("ALL FIELDS REQUIRED");
       return;
@@ -46,7 +46,9 @@ function UpdatePlacement() {
     ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})
   }
 
-
+  const gosearch = ()=>{
+    navigate('/clgsearch');
+  }
 
     return (
         <React.Fragment>
@@ -57,8 +59,8 @@ function UpdatePlacement() {
               <Row  style={{display:"flex",justifyContent:"end"}}>
               <Col sm = {12} xs={12} md={6} lg={6}>
                 <Form style={{display:"flex"}}>
-              <input placeholder="Search College" className='inp'/>
-              <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
+              <input placeholder="Search Company" className='inp'/>
+              <Button onClick={gosearch} style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
               </Form></Col>
               </Row>
                     <Row>
@@ -76,10 +78,10 @@ function UpdatePlacement() {
                        <Form.Control  onChange = {(e)=>{setCmp(e.target.value);}}  required type="text" placeholder="name@example.com" />
                        </FloatingLabel>
                        <FloatingLabel label="Profile" className="mb-3">
-                       <Form.Control  onChange = {(e)=>{setPrf(e.target.value);}}  required type="text" placeholder="name@example.com" />
+                       <Form.Control  onChange = {(e)=>{setPrf(e.target.value);}} type="text" placeholder="name@example.com" />
                        </FloatingLabel>
                      <FloatingLabel label="Package" className="mb-3">
-                       <Form.Control  onChange = {(e)=>{setpkg(e.target.value);}}  required type="number" placeholder="website" />
+                       <Form.Control  onChange = {(e)=>{setpkg(e.target.value);}}  type="text" placeholder="website" />
                        </FloatingLabel>
                        <Form.Group className="mb-3" >
         <Form.Label>New Image</Form.Label>

@@ -26,7 +26,7 @@ function SetCompanyProfile() {
     fd.append("website",web)
     const data = {
       headers:{
-        authorization: localStorage.getItem("jwtToken"),
+        authorization: localStorage.getItem("accessToken"),
         'Content-Type': 'multipart/form-data'
       }
     }
@@ -36,7 +36,8 @@ function SetCompanyProfile() {
         console.log(resp);
         setMsg("Successfully Registered");
         setStyle("success");
-        setTimeout(()=>{navigate("/mycompanydashboard")},500);
+        localStorage.removeItem('accessToken');
+        setTimeout(()=>{navigate("/companylogin")},500);
       }
     ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})
   }

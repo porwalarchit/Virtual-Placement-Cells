@@ -36,6 +36,7 @@ function CompanySignup() {
         setMsg("Successfully Registered");
         setStyle("success");
         setTimeout(()=>{navigate("/setcompany")},2000);
+        localStorage.setItem('accessToken',resp.data.accessToken)
         }
       }
     ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})

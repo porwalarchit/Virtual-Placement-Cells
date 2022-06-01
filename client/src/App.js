@@ -22,6 +22,8 @@ import ViewPlacements from './College/ViewPlacements';
 import Contactus from './College/Contactus';
 import CompanyJobs from './Components/CompanyJobs'
 import Collegefromcomp from './Components/Collegefromcomp';
+import CollegeSearch from './College/CollegeSearch';
+import CompanySearch from './Components/CompanySearch';
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
       <Route exact path='/ViewPlacements' element = {<ViewPlacements/>}/>
       <Route exact path='/companyjobs' element = {<CompanyJobs/>}/>
       <Route exact path='/clgfromcmpny/:id' element = {<Collegefromcomp/>}/>
+      <Route exact path='/clgsearch' element = {<CollegeSearch/>}/>
+      <Route exact path='/cmpnysearch' element = {<CompanySearch/>}/>
     </Routes>
     </BrowserRouter>
   )

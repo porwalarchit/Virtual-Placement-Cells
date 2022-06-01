@@ -4,8 +4,10 @@ import CollegeProfile from './CollegeProfile'
 import '../Components/CompanyProfile.css'
 import axios from 'axios'
 import Placement from './Placement'
+import { useNavigate } from 'react-router-dom'
 
 function ViewPlacements() {
+  const navigate = useNavigate();
   const [data,setData] = useState([]);
   const config = {
     headers:{
@@ -20,7 +22,9 @@ function ViewPlacements() {
   console.error(err);
       })
   },[]);
-  
+  const gosearch = ()=>{
+    navigate('/clgsearch');
+  }
   return (
     <React.Fragment>
     <Container fluid>
@@ -30,8 +34,8 @@ function ViewPlacements() {
           <Row  style={{display:"flex",justifyContent:"end"}}>
           <Col sm = {12} xs={12} md={6} lg={6}>
             <Form style={{display:"flex"}}>
-          <input placeholder="Search College" className='inp'/>
-          <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
+          <input placeholder="Search Company" className='inp'/>
+          <Button onClick={gosearch} style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
           </Form></Col>
           </Row>
                 <Row>

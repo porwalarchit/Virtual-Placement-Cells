@@ -41,7 +41,9 @@ function UpdateProfile() {
       }
     ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})
   }
-
+  const gosearch = ()=>{
+    navigate('/cmpnysearch');
+  }
 
   return (
     <React.Fragment>
@@ -53,7 +55,7 @@ function UpdateProfile() {
           <Col sm = {12} xs={12} md={6} lg={6}>
             <Form style={{display:"flex"}}>
           <input placeholder="Search College" className='inp'/>
-          <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
+          <Button onClick={gosearch}  style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
           </Form></Col>
           </Row>
                 <Row>
@@ -65,10 +67,10 @@ function UpdateProfile() {
                   <Col>
                  <Form>
                    <FloatingLabel label="Description" className="mb-3">
-                   <Form.Control  onChange = {(e)=>{setDesc(e.target.value);}} required as="textarea" style={{height:"200px"}} maxLength="1200" placeholder="description about company"/>
+                   <Form.Control  onChange = {(e)=>{setDesc(e.target.value);}} as="textarea" style={{height:"200px"}} maxLength="1200" placeholder="description about company"/>
                    </FloatingLabel>
                  <FloatingLabel label="Website" className="mb-3">
-                   <Form.Control onChange = {(e)=>{setWeb(e.target.value);}} required type="text" placeholder="website" />
+                   <Form.Control onChange = {(e)=>{setWeb(e.target.value);}} type="text" placeholder="website" />
                    </FloatingLabel>
                    <Form.Group className="mb-3" >
     <Form.Label>New Image</Form.Label>

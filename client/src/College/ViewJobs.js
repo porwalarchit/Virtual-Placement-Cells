@@ -4,9 +4,11 @@ import CollegeProfile from './CollegeProfile'
 import '../Components/CompanyProfile.css'
 import Job from './Job'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function ViewJobs() {
   const [data,setData] = useState([]);
+  const nav = useNavigate();
   const [msg,setMsg] = useState("");
   const config = {
     headers:{
@@ -22,7 +24,9 @@ function ViewJobs() {
         console.error(err)
       })
   },[]);
-  
+  const gosearch = ()=>{
+    nav('/clgsearch');
+  }
   
   return (
     <React.Fragment>
@@ -33,8 +37,8 @@ function ViewJobs() {
           <Row  style={{display:"flex",justifyContent:"end"}}>
           <Col sm = {12} xs={12} md={6} lg={6}>
             <Form style={{display:"flex"}}>
-          <input placeholder="Search College" className='inp'/>
-          <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
+          <input placeholder="Search Company" className='inp'/>
+          <Button onClick={gosearch} style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
           </Form></Col>
           </Row>
                 <Row>

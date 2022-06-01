@@ -28,11 +28,12 @@ function InstituteSignUp() {
     axios.post("http://localhost:5000/college/register",config).then(
       (resp)=>{
         console.log(resp)
+        localStorage.setItem('accessToken',resp.data.accessToken)
         setMsg("Successfully Registered");
         setStyle("success");
         setTimeout(()=>{navigate("/setcollege")},2000);
       }
-    ).catch((err)=>{setMsg(err.response.data.message);console.error(err);})
+    ).catch((err)=>{console.error(err);})
   }
 
 

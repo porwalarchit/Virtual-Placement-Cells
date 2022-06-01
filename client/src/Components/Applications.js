@@ -4,6 +4,7 @@ import CompanyProfile from './CompanyProfile'
 import './CompanyProfile.css'
 import Application from './Application'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function Applications() {
   const [data,setData] = useState([]);
@@ -14,7 +15,7 @@ const config = {
     authorization:localStorage.getItem('jwtToken'),
   }
 }
-
+const navigate = useNavigate();
 function getApplied(){
   console.log(config)
   axios.get("http://localhost:5000/company/viewAppliedCollege",config).then((resp)=>{
@@ -31,7 +32,9 @@ function getApplied(){
 useEffect(()=>{
   getApplied() 
 },[updated]);
-
+const gosearch = ()=>{
+  navigate('/cmpnysearch');
+}
 
   return (
     <React.Fragment>
@@ -43,7 +46,7 @@ useEffect(()=>{
           <Col sm = {12} xs={12} md={6} lg={6}>
             <Form style={{display:"flex"}}>
           <input placeholder="Search College" className='inp'/>
-          <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
+          <Button onClick={gosearch} style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
           </Form></Col>
           </Row>
           <Row>

@@ -46,6 +46,9 @@ function PostJobs() {
         setMsg("Some Error Occured");
       })
  }
+ const gosearch = ()=>{
+  navigate('/cmpnysearch');
+}
 
   return (
     <React.Fragment>
@@ -57,7 +60,7 @@ function PostJobs() {
           <Col sm = {12} xs={12} md={6} lg={6}>
             <Form style={{display:"flex"}}>
           <input placeholder="Search College" className='inp'/>
-          <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
+          <Button  onClick={gosearch} style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
           </Form></Col>
           </Row>
                 <Row>

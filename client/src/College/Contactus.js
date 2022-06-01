@@ -9,13 +9,16 @@ import { useNavigate } from 'react-router-dom'
 
 function Contactus() {
   const [msg,setMsg]=useState("");
-  const nav = useNavigate();
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     emailjs.sendForm('service_ba05nde','template_n358vgs',event.target,'user_XQZLfdP4na11L1AnqPxQG').then(res=>{console.log(res);}).catch(err=>{console.log(err);});
     setMsg("Email Successfully sent!");
     event.target.reset();
-    setTimeout(()=>{nav("/mycollegedashboard")},500);
+    setTimeout(()=>{navigate("/mycollegedashboard")},500);
+  }
+  const gosearch = ()=>{
+    navigate('/clgsearch');
   }
   return (
     <React.Fragment>
@@ -26,8 +29,8 @@ function Contactus() {
           <Row  style={{display:"flex",justifyContent:"end"}}>
           <Col sm = {12} xs={12} md={6} lg={6}>
             <Form style={{display:"flex"}}>
-          <input placeholder="Search College" className='inp'/>
-          <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
+          <input placeholder="Search Company" className='inp'/>
+          <Button onClick={gosearch} style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
           </Form></Col>
           </Row>
                 <Row>

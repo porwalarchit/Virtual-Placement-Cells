@@ -4,10 +4,12 @@ import CompanyProfile from './CompanyProfile'
 import './CompanyProfile.css'
 import Companyjob from './Companyjob'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function CompanyJobs() {
   const [data,setData] = useState([]);
   const [msg,setMsg] = useState("");
+  const navigate = useNavigate();
   const config = {
     headers:{
       authorization:localStorage.getItem('jwtToken'),
@@ -22,6 +24,9 @@ function CompanyJobs() {
         console.error(err)
       })
   },[]);
+  const gosearch = ()=>{
+    navigate('/cmpnysearch');
+  }
   
   return (
     <React.Fragment>
@@ -33,7 +38,7 @@ function CompanyJobs() {
           <Col sm = {12} xs={12} md={6} lg={6}>
             <Form style={{display:"flex"}}>
           <input placeholder="Search College" className='inp'/>
-          <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
+          <Button onClick={gosearch} style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
           </Form></Col>
           </Row>
                 <Row>

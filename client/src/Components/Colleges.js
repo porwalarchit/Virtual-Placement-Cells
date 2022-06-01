@@ -4,8 +4,10 @@ import CompanyProfile from './CompanyProfile'
 import './CompanyProfile.css'
 import axios from 'axios'
 import College from './College'
+import { useNavigate } from 'react-router-dom'
 
 function Colleges() {
+  const navigate = useNavigate();
   const [data,setData] = useState([]);
 const [msg,setMsg] = useState("");
 const config = {
@@ -21,6 +23,9 @@ useEffect(()=>{
       setMsg("Some Error Occured");
     })
 },[]);
+const gosearch = ()=>{
+  navigate('/cmpnysearch');
+}
 
   return (
     <React.Fragment>
@@ -32,7 +37,7 @@ useEffect(()=>{
           <Col sm = {12} xs={12} md={6} lg={6}>
             <Form style={{display:"flex"}}>
           <input placeholder="Search College" className='inp'/>
-          <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
+          <Button onClick={gosearch} style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
           </Form></Col>
           </Row>
                 <Row>

@@ -3,10 +3,12 @@ import { Alert,Container,Row,Col,Form,Button } from 'react-bootstrap'
 import CollegeProfile from './CollegeProfile'
 import '../Components/CompanyProfile.css'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function MyCollegeDashboard() {
     const [data,setData] = useState("");
 const [msg,setMsg] = useState("");
+const nav = useNavigate();
 const config = {
   headers:{
     authorization:localStorage.getItem('jwtToken'),
@@ -19,7 +21,9 @@ useEffect(()=>{
       setMsg("Some Error Occured");
     })
 },[]);
-
+const gosearch = ()=>{
+  nav('/clgsearch');
+}
 
   return (
     <React.Fragment>
@@ -30,8 +34,8 @@ useEffect(()=>{
           <Row  style={{display:"flex",justifyContent:"end"}}>
           <Col sm = {12} xs={12} md={6} lg={6}>
             <Form style={{display:"flex"}}>
-          <input placeholder="Search College" className='inp'/>
-          <Button style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
+          <input placeholder="Search Company" className='inp'/>
+          <Button onClick={gosearch} style={{marginLeft:"2%",width:"70%",height:"50px",backgroundColor:"black",marginTop:"1%"}}>Search</Button>
           </Form></Col>
           </Row>
                 <Row>
@@ -40,7 +44,7 @@ useEffect(()=>{
         {msg}
       </Alert>}
                   <Col className='Heading'>
-                    Welcome {data.companyName}
+                    Welcome {data.collegeName}
                   </Col>
                 </Row>
                 <Row style={{display:"flex",justifyContent:"center"}}>
