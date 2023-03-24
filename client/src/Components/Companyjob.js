@@ -25,9 +25,9 @@ function Companyjob({dt}) {
             {dt.duration}
         </Row>
         <Row style={{fontSize:"130%"}}>
-            {arr.map(d=>{
-                <div>d</div>
-            })}
+            {arr.map(d=>
+                (<div>d</div>)
+            )}
         </Row>
         </Col>
     </Row>

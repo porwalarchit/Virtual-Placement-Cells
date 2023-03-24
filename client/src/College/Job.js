@@ -60,9 +60,9 @@ function Job({dt}) {
              <div style={{color:"red",fontWeight:"bold"}}>{msg}</div>
           </Row>
           <Row style={{fontSize:"130%"}}>
-              {arr.map(d=>{
+              {arr.map(d=>
                   <div>d</div>
-              })}
+              )}
           </Row>
           </Col>
       </Row>
